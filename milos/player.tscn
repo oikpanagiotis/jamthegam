@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4l48lfa3qytg"]
+
+[ext_resource type="Script" path="res://milos/player.gd" id="1_esedo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(78, 43)
+script = ExtResource("1_esedo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e2y3g")
