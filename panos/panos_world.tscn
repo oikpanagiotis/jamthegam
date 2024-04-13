@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bww0prsfilate"]
+
+[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/bat/bat.tscn" id="1_2v7jx"]
+
+[node name="PanosWorld" type="Node2D"]
+
+[node name="Bat" parent="." instance=ExtResource("1_2v7jx")]
+position = Vector2(238, 123)
