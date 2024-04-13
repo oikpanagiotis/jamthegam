@@ -23,12 +23,16 @@ ScreenEffects="*res://autoloads/screen_effects.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=768
+window/size/viewport_height=432
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [input]
 

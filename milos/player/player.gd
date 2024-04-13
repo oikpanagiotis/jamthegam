@@ -1,13 +1,16 @@
 class_name Player extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 var coyote_timer_frames = 5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2 
 var coyote_timer = 0
-
+@onready
+var sprite = $Sprite2D
 var input = Vector2.ZERO
+var last_direction = 1
+
 func _process(delta):
 	if is_on_floor():
 		coyote_timer = coyote_timer_frames * delta
@@ -27,6 +30,10 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
+		if (direction == 1):
+			sprite.flip_h =  0
+		else:
+			sprite.flip_h =  1
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
