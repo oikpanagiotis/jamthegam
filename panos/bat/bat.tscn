@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://3tj54of4mobb"]
+[gd_scene load_steps=5 format=3 uid="uid://3tj54of4mobb"]
 
 [ext_resource type="Texture2D" uid="uid://fjeg8k7cvo1x" path="res://panos/bat/bat.png" id="1_sc0r3"]
+[ext_resource type="Script" path="res://panos/bat/bat.gd" id="1_w4hm7"]
+[ext_resource type="PackedScene" uid="uid://dayevh1hk5b0s" path="res://scenes/player_sensor.tscn" id="3_vavvd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d1so"]
 radius = 14.0357
 
-[node name="Bat" type="CharacterBody2D"]
+[node name="Bat" type="CharacterBody2D" groups=["anchor"]]
+script = ExtResource("1_w4hm7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_sc0r3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_4d1so")
+
+[node name="PlayerSensor" parent="." instance=ExtResource("3_vavvd")]
