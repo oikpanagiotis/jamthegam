@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bww0prsfilate"]
+[gd_scene load_steps=3 format=3 uid="uid://bww0prsfilate"]
 
 [ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/bat/bat.tscn" id="1_2v7jx"]
+[ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="2_hekse"]
 
 [node name="PanosWorld" type="Node2D"]
 
 [node name="Bat" parent="." instance=ExtResource("1_2v7jx")]
 position = Vector2(238, 123)
+
+[node name="Player" parent="." instance=ExtResource("2_hekse")]
+position = Vector2(346, 59)
