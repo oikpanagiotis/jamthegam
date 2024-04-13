@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdt4esamatrok"]
+
+[ext_resource type="Script" path="res://panos/projectile.gd" id="1_617od"]
+[ext_resource type="Texture2D" uid="uid://72qthfp3wnli" path="res://icon.svg" id="1_wj281"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4eku8"]
+radius = 13.0384
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_617od")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0901961, 1, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wj281")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4eku8")
