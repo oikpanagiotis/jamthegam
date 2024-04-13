@@ -1,5 +1,7 @@
 .godot/
 .import/
 .vscode/
+*.godot
+*.import
 dist/
 release.sh
