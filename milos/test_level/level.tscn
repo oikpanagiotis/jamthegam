@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cb60dktxntmjf"]
+[gd_scene load_steps=2 format=3 uid="uid://cb60dktxntmjf"]
+
+[ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="1_81hit"]
 
 [node name="level" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_81hit")]
+position = Vector2(390, 216)

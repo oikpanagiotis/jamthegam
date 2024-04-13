@@ -4,7 +4,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var coyote_timer_frames = 5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 0# ProjectSettings.get_setting("physics/2d/default_gravity")
 var coyote_timer = 0
 
 var input = Vector2.ZERO
