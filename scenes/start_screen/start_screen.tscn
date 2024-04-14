@@ -1,6 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://drays0ifpprxp"]
+[gd_scene load_steps=7 format=3 uid="uid://drays0ifpprxp"]
 
 [ext_resource type="Script" path="res://scenes/start_screen/start_screen.gd" id="1_t7d8i"]
+[ext_resource type="Texture2D" uid="uid://csewor8n0v27u" path="res://placeholders/intro_image.png" id="2_adbgj"]
+[ext_resource type="Theme" uid="uid://jefgai77tja2" path="res://scenes/start_screen/basic.tres" id="3_jdls5"]
+
+[sub_resource type="Animation" id="Animation_0vd4r"]
+resource_name = "Intro"
+length = 15.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroCustscene:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_c6qmw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroCustscene:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wp1c"]
+_data = {
+"Intro": SubResource("Animation_0vd4r"),
+"RESET": SubResource("Animation_c6qmw")
+}
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -10,3 +74,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t7d8i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0wp1c")
+}
+
+[node name="IntroCustscene" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(384, 216)
+texture = ExtResource("2_adbgj")
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VFlowContainer" type="HFlowContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -8.0
+offset_right = 22.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Credits/VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("3_jdls5")
+text = "Panos"
+
+[node name="Label2" type="Label" parent="Credits/VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("3_jdls5")
+text = "Milos"
+
+[node name="Label3" type="Label" parent="Credits/VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("3_jdls5")
+text = "Michael"
+
+[node name="Label4" type="Label" parent="Credits/VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("3_jdls5")
+text = "Silea"
+
+[node name="Label5" type="Label" parent="Credits/VFlowContainer"]
+layout_mode = 2
+theme = ExtResource("3_jdls5")
+text = "Alex"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -11.5
+offset_right = 79.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_jdls5")
+text = "Press Any key to continue"

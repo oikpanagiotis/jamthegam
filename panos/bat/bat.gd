@@ -9,6 +9,9 @@ const COOLDOWN := 500
 
 var projectile_scn = preload("res://panos/projectile.tscn")
 
+func die() -> None:
+	queue_free()
+
 func attack(direction: Vector2):
 	const SPEED = 700
 	var projectile = projectile_scn.instantiate()
@@ -20,6 +23,9 @@ func on_player_seen(player: CharacterBody2D) -> void:
 	player_ref = player
 	seen = true
 
+func _ready() -> void:
+	if is_in_group("agent"):
+		assert(has_method("die"), "All agents must implement die")
 
 func _physics_process(delta) -> void:
 	if seen and player_ref != null:
