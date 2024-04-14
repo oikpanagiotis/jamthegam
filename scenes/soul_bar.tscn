@@ -1,23 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkqvwjofdqefx"]
+[gd_scene load_steps=4 format=3 uid="uid://dkqvwjofdqefx"]
 
-[sub_resource type="Theme" id="Theme_v7pyr"]
+[ext_resource type="Script" path="res://scenes/soul_bar.gd" id="1_2tmvu"]
 
-[node name="SoulBar" type="Control"]
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme = SubResource("Theme_v7pyr")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj267"]
+bg_color = Color(0.0470588, 0, 0.145098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-alignment = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2e8v"]
+bg_color = Color(0.392157, 0.34902, 0.784314, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
-layout_mode = 2
-max_value = 1.5
+[node name="SoulBar" type="ProgressBar"]
+z_index = 1
+offset_right = 220.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tj267")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w2e8v")
 step = 0.1
-value = 1.5
+value = 100.0
 show_percentage = false
+script = ExtResource("1_2tmvu")
+
+[node name="SoulStarvationTimer" type="Timer" parent="."]
+wait_time = 2.0
