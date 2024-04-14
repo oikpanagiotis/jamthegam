@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://defnt4hshxnfw"]
+[gd_scene load_steps=14 format=3 uid="uid://defnt4hshxnfw"]
 
 [ext_resource type="Texture2D" uid="uid://cv54mdip1glwa" path="res://world/world_tiles.png" id="1_efkon"]
 [ext_resource type="Script" path="res://world/map.gd" id="1_sl4yd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://sveyypxhcy5r" path="res://world/parallax/BG04.png" id="9_iuoxs"]
 [ext_resource type="Texture2D" uid="uid://b1mhyp5onpg6f" path="res://world/parallax/BG05.png" id="10_h0xoh"]
 [ext_resource type="Texture2D" uid="uid://dwlplfnnqj851" path="res://world/parallax/BG06.png" id="11_sxmx5"]
+[ext_resource type="AudioStream" uid="uid://ccs86ful05flk" path="res://sfx/music/1-28-encore-201132.mp3" id="11_ub8je"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyg2f"]
 texture = ExtResource("1_efkon")
@@ -182,3 +183,8 @@ motion_mirroring = Vector2(3840, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_sxmx5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ub8je")
+volume_db = -5.0
+autoplay = true
