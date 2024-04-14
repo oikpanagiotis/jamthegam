@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://defnt4hshxnfw"]
 
-[ext_resource type="Texture2D" uid="uid://bn47c1qwkuefq" path="res://world/world_tiles.png" id="1_efkon"]
+[ext_resource type="Texture2D" uid="uid://cv54mdip1glwa" path="res://world/world_tiles.png" id="1_efkon"]
 [ext_resource type="Script" path="res://world/map.gd" id="1_sl4yd"]
-[ext_resource type="Texture2D" uid="uid://xxm016ag0ldj" path="res://details/Tile 19.png" id="2_ggojo"]
+[ext_resource type="Texture2D" uid="uid://bix1xn2mu61ey" path="res://details/Tile 19.png" id="2_ggojo"]
 [ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/bat/bat.tscn" id="3_6jbqp"]
-[ext_resource type="PackedScene" path="res://scenes/player_spawn_point.tscn" id="5_w3rt8"]
+[ext_resource type="PackedScene" uid="uid://c128c2eeb5c5x" path="res://scenes/player_spawn_point.tscn" id="5_w3rt8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyg2f"]
 texture = ExtResource("1_efkon")
@@ -72,7 +72,6 @@ sources/0 = SubResource("TileSetAtlasSource_vyg2f")
 
 [node name="WorldBuilder" type="Node2D"]
 script = ExtResource("1_sl4yd")
-metadata/_edit_lock_ = true
 
 [node name="Map" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_cy503")
@@ -136,3 +135,7 @@ rotation = 2.97881
 collision_layer = 2
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_w3rt8")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]

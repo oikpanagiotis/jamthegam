@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4l48lfa3qytg"]
+[gd_scene load_steps=29 format=3 uid="uid://d4l48lfa3qytg"]
 
 [ext_resource type="Script" path="res://milos/player/player.gd" id="1_esedo"]
 [ext_resource type="Texture2D" uid="uid://c368mieqduoyp" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
@@ -14,7 +14,17 @@
 [ext_resource type="Texture2D" uid="uid://befy05qnk5cmc" path="res://milos/player/animations/dash_3.PNG" id="11_710mc"]
 [ext_resource type="AudioStream" uid="uid://b6aubefwhusk6" path="res://sfx/attack/attack2.wav" id="13_7xu1p"]
 [ext_resource type="PackedScene" uid="uid://pxkra1gdo4o1" path="res://michail/Lamp/Lamp.tscn" id="14_7huuw"]
-[ext_resource type="Script" path="res://milos/player/AnimationController.gd" id="15_cylnv"]
+[ext_resource type="Texture2D" uid="uid://buyumk5chmit4" path="res://milos/player/animations/wall_slide_1.PNG" id="15_ova58"]
+[ext_resource type="Texture2D" uid="uid://dvbuhbul55ajs" path="res://milos/player/animations/wall_slide_2.PNG" id="16_vibgh"]
+[ext_resource type="Texture2D" uid="uid://h7u1s15be10l" path="res://milos/player/animations/jump_1.PNG" id="17_5gxl2"]
+[ext_resource type="Texture2D" uid="uid://bl8jt2v6t41ua" path="res://milos/player/animations/jump_2.PNG" id="18_6srty"]
+[ext_resource type="Texture2D" uid="uid://ses6k1dy74hd" path="res://milos/player/animations/jump_3.PNG" id="19_q4wdn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
+size = Vector2(14, 41.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfdlu"]
+radius = 228.0
 
 [sub_resource type="Animation" id="Animation_uqji2"]
 length = 0.001
@@ -96,19 +106,49 @@ tracks/0/keys = {
 "values": [ExtResource("5_ur1hw"), ExtResource("6_sivtx"), ExtResource("7_4h4in"), ExtResource("8_uvqc7"), ExtResource("9_ws5fv")]
 }
 
+[sub_resource type="Animation" id="Animation_hdrja"]
+resource_name = "wall_slide"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("15_ova58"), ExtResource("16_vibgh")]
+}
+
+[sub_resource type="Animation" id="Animation_ghnt5"]
+resource_name = "jump"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_5gxl2"), ExtResource("18_6srty"), ExtResource("19_q4wdn")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_478pa"]
 _data = {
 "RESET": SubResource("Animation_uqji2"),
 "dash": SubResource("Animation_k4ruu"),
 "idle": SubResource("Animation_02cwt"),
-"run": SubResource("Animation_0ido5")
+"jump": SubResource("Animation_ghnt5"),
+"run": SubResource("Animation_0ido5"),
+"wall_slide": SubResource("Animation_hdrja")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
-size = Vector2(14, 41.5)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kfdlu"]
-radius = 228.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(78, 43)
@@ -118,16 +158,6 @@ friction_floor = 1500
 friction_air = 600
 gravity_muliplier = 2
 dash_cooldown_in_frames = 120
-
-[node name="AnimationController" type="Node" parent="."]
-script = ExtResource("15_cylnv")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationController"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_478pa")
-}
-autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ysekg")
@@ -189,16 +219,22 @@ position = Vector2(-78, -43)
 stream = ExtResource("13_7xu1p")
 
 [node name="Lamp" parent="." instance=ExtResource("14_7huuw")]
+visible = false
 position = Vector2(-28, -13)
 mass = 30.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
+visible = false
 position = Vector2(-27, -13)
 node_a = NodePath("..")
 node_b = NodePath("../Lamp")
 angular_limit_enabled = true
 
-[connection signal="animation_finished" from="AnimationController/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationController/AnimationPlayer" to="AnimationController" method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="AnimationController/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
-[connection signal="animation_started" from="AnimationController/AnimationPlayer" to="AnimationController" method="_on_animation_player_animation_started"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_478pa")
+}
+autoplay = "idle"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
