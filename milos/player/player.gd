@@ -100,13 +100,13 @@ func move(delta):
 			sprite.flip_h = 1
 		else:
 			sprite.flip_h = 0
-		if dash_animation_finished:
+		if dash_animation_finished && is_on_floor():
 			animation_player.play("run")
 
 		if(abs(velocity.x + direction * SPEED * delta) < MAX_SPEED):
 			velocity.x += direction * SPEED * delta
 	else:
-		if dash_animation_finished:
+		if dash_animation_finished && is_on_floor():
 			animation_player.play("idle")
 		if is_on_floor():
 			if abs(velocity.x) > (friction_floor * delta):
@@ -135,8 +135,9 @@ func move(delta):
 	if Input.is_action_just_released("jump")&&!is_falling()&&(velocity.y < -300):
 		velocity.y += 160
 		
-	if velocity.y != 0 :
+	if velocity.y != 0 && !is_on_wall_only():
 		animation_player.play("jump")
+	
 	#Trash code please fix
 	velocity.y = clamp(velocity.y,-gravity_terminal_velocity*1000,gravity_terminal_velocity)
 	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
