@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://defnt4hshxnfw"]
 
-[ext_resource type="Texture2D" uid="uid://bn47c1qwkuefq" path="res://world/world_tiles.png" id="1_efkon"]
-[ext_resource type="Texture2D" uid="uid://xxm016ag0ldj" path="res://details/Tile 19.png" id="2_ggojo"]
+[ext_resource type="Texture2D" uid="uid://cv54mdip1glwa" path="res://world/world_tiles.png" id="1_efkon"]
+[ext_resource type="Texture2D" uid="uid://bix1xn2mu61ey" path="res://details/Tile 19.png" id="2_ggojo"]
 [ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/bat/bat.tscn" id="3_6jbqp"]
 [ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="4_fvp6c"]
 
