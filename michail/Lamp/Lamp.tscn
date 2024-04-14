@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://pxkra1gdo4o1"]
+
+[ext_resource type="Texture2D" uid="uid://bmsag2uyxyji6" path="res://michail/lamp.png" id="1_vr31m"]
+[ext_resource type="Texture2D" uid="uid://cdeqfsn3777v" path="res://michail/Glow.png" id="2_dedxw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51xkb"]
+
+[node name="Lamp" type="RigidBody2D"]
+position = Vector2(8, 4)
+collision_layer = 0
+collision_mask = 0
+
+[node name="LampSprite" type="Sprite2D" parent="."]
+position = Vector2(1, 14)
+texture = ExtResource("1_vr31m")
+
+[node name="LampCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_51xkb")
+
+[node name="Glow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(1, 17)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_dedxw")

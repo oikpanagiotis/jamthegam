@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhwpv0anhv6vs"]
 
-[ext_resource type="Texture2D" uid="uid://bnjt0g08fopoo" path="res://michail/Tileset/tileset.png" id="1_70iwa"]
+[ext_resource type="Texture2D" uid="uid://dobm6yomtrajj" path="res://michail/Tileset/tileset.png" id="1_70iwa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f2xv1"]
 texture = ExtResource("1_70iwa")
@@ -482,6 +482,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_f2xv1")
 
-[node name="TileMap" type="TileMap"]
+[node name="TestTileMap" type="TileMap"]
 tile_set = SubResource("TileSet_dl1x7")
 format = 2
