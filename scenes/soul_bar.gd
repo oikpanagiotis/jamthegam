@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 
 
 func emit_souls_depleted() -> void:
-	print("player died")
+
 	emit_signal("player_died", "no_souls")
 
 func _on_minion_killed() -> void:
