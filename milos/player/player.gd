@@ -47,7 +47,8 @@ func _physics_process(delta):
 		
 	if should_stop_dashing():
 		is_dashing = false
-		velocity = (target.global_position - global_position).normalized()*(-JUMP_VELOCITY)*2
+		velocity.y = clamp((target.global_position - global_position).y,-1,1)*(-JUMP_VELOCITY)
+		velocity.x = clamp((target.global_position - global_position).x,-1,1)*(-JUMP_VELOCITY)
 		print(velocity)
 
 	if is_dashing:
@@ -104,11 +105,8 @@ func move(delta):
 		velocity.y += 160
 	
 	#velo7city.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
-	if is_on_floor():
-		velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
-	else:
-		velocity.x = clamp(velocity.x,-MAX_SPEED*1.5,MAX_SPEED*1.5)
-	
+	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
+
 	
 
 func animate_arrow(current_target):
