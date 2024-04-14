@@ -1,8 +1,8 @@
 extends Control
 
+@export var max_soulbits: int = 4
+var player_ref: Player = null
 
-@export var player_ref: Player = null
-@export var max_soulbits: int = 700
 
 var soulbits
 

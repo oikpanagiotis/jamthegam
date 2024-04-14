@@ -1,13 +1,28 @@
 extends Node
 
+var hud = preload("res://scenes/hud.tscn")
+var level_1 = preload("res://world/map.tscn")
 
-func
+var levels_beat = 0
+var LEVELS = {
+	1: level_1,
+}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func start_level_and_get_player(level_number: int) -> Player:
+	var hud = get_node("HUD")
+	if hud:
+		hud.queue_free()
+	
+	var level = LEVELS.get(level_number).instantiate()
+	add_child(level)
+	return level.get_player()
 
+func initialize_hud(player: Player) -> void:
+	var hud_layer = hud.instantiate()
+	hud_layer.get_node("SoulBar").player_ref = player
+	add_child(hud_layer)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _ready() -> void:
+	var player = start_level_and_get_player(1)
+	initialize_hud(player)
+
