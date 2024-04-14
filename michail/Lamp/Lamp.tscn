@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pxkra1gdo4o1"]
 
-[ext_resource type="Texture2D" uid="uid://bmsag2uyxyji6" path="res://michail/lamp.png" id="1_vr31m"]
-[ext_resource type="Texture2D" uid="uid://cdeqfsn3777v" path="res://michail/Glow.png" id="2_dedxw"]
+[ext_resource type="Texture2D" uid="uid://bajt0hiq8nspn" path="res://michail/lamp.png" id="1_vr31m"]
+[ext_resource type="Texture2D" uid="uid://c3ex2fgcdfyhf" path="res://michail/Glow.png" id="2_dedxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_51xkb"]
 
@@ -15,6 +15,7 @@ position = Vector2(1, 14)
 texture = ExtResource("1_vr31m")
 
 [node name="LampCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 15)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_51xkb")
