@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4l48lfa3qytg"]
+
+[ext_resource type="Script" path="res://milos/player/player.gd" id="1_esedo"]
+[ext_resource type="Texture2D" uid="uid://bbmv85a6jclj0" path="res://milos/player/idle_2.png" id="2_l7thp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
+size = Vector2(14, 41.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfdlu"]
+radius = 139.004
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(78, 43)
+script = ExtResource("1_esedo")
+SPEED = null
+MAX_SPEED = null
+JUMP_VELOCITY = null
+friction_floor = null
+friction_air = null
+gravity_muliplier = null
+coyote_frames = null
+wall_frames = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_l7thp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e2y3g")
+
+[node name="LeftWallRayCastLower" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, 10)
+rotation = 1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightWallRayCastLower" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, 10)
+rotation = -1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="LeftWallRayCastUpper" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, -10)
+rotation = 1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightWallRayCastUpper" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, -10)
+rotation = -1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="DashDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DashDetectionArea"]
+shape = SubResource("CircleShape2D_kfdlu")

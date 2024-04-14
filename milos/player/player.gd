@@ -13,11 +13,16 @@ class_name Player extends CharacterBody2D
 @onready var right_wall_raycast_lower = $CollisionShape2D/RightWallRayCastLower
 @onready var left_wall_raycast_upper = $CollisionShape2D/LeftWallRayCastUpper
 @onready var right_wall_raycast_upper = $CollisionShape2D/RightWallRayCastUpper
+@onready var dash_detection_area = $DashDetectionArea
+@onready var animation_player = $AnimationPlayer
 
+var is_dashing = false
 var input = Vector2.ZERO
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * gravity_muliplier
 var coyote_timer = 0
-
+var target = null
+var arrow_scene = preload("res://milos/arrow/arrow.tscn")
+var current_arrow :Node2D = arrow_scene.instantiate()
 func _process(delta):
 	if is_on_floor():
 		coyote_timer = coyote_frames 
@@ -26,6 +31,18 @@ func _process(delta):
 			coyote_timer -= 1
 
 func _physics_process(delta):
+	var current_target:Node2D = get_target()
+
+	animate_arrow(current_target)
+	target = current_target
+	if target != null && Input.is_action_pressed("attack"):
+		position = position.move_toward(target.global_position,20)
+		velocity = Vector2.ZERO
+	else:
+		move(delta)
+	move_and_slide()
+	
+func move(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		if is_on_wall_only()&&is_falling():
@@ -36,9 +53,15 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
+		if direction == -1:
+			sprite.flip_h = 1
+		else:
+			sprite.flip_h = 0
+		animation_player.play("run")
 		#phantom_cam.set_follow_target_offset(Vector2(phantom_cam.get_follow_target_offset().x*direction,phantom_cam.get_follow_target_offset().y))
 		velocity.x += direction * SPEED * delta
 	else:
+		animation_player.play("idle")
 		if is_on_floor():
 			if abs(velocity.x) > (friction_floor * delta):
 				velocity.x -= velocity.normalized().x * (friction_floor * delta)
@@ -65,13 +88,39 @@ func _physics_process(delta):
 		velocity.y += 160
 
 	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
-	move_and_slide()
+
+func animate_arrow(current_target):
+	if current_target != null:
+		if current_target!=target:
+			current_target.add_child(current_arrow)
+			if(target!= null):
+				target.remove_child(current_arrow)
+		current_arrow.global_rotation = get_angle_to(current_target.position)
+	else:	
+		if(target!= null):
+			target.remove_child(current_arrow)
+
+func get_target():
+	var enemies_in_range = get_enemies_in_range()
+	if enemies_in_range.size() >= 1:
+		return enemies_in_range[0]
+	else:
+		return null
+
+func get_enemies_in_range():
+	var enemies = []
+	for body in dash_detection_area.get_overlapping_bodies():
+		if body.is_in_group("agent"):
+			enemies.append(body)
+
+	return enemies
 
 func is_falling():
 	return velocity.y > 0
 
 func is_fully_on_right_wall():
 	return right_wall_raycast_upper.is_colliding() && right_wall_raycast_lower.is_colliding()
+
 func is_fully_on_left_wall():
 	return left_wall_raycast_upper.is_colliding() && left_wall_raycast_upper.is_colliding()
 	
