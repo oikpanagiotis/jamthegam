@@ -19,10 +19,11 @@ class_name Player extends CharacterBody2D
 @onready var left_wall_raycast_upper = $CollisionShape2D/LeftWallRayCastUpper
 @onready var right_wall_raycast_upper = $CollisionShape2D/RightWallRayCastUpper
 @onready var dash_detection_area = $DashDetectionArea
-@onready var animation_player = $AnimationPlayer
 
 @onready var dash_audio_player = $DashAudioPlayer
+enum State{WALKING=0,IDLE=1,WALL_RUNNING=2,DASHING = 3}
 
+var state:State = State.IDLE
 var is_dashing = false
 var last_direction = 1
 var dash_animation_finished = false
@@ -69,7 +70,7 @@ func _physics_process(delta):
 			sprite.flip_h = 1
 		else:
 			sprite.flip_h = 0
-		animation_player.play("dash")
+		state = State.DASHING
 		dash_cooldown_in_frames = 15
 		dash_velocity = (target.global_position - global_position).normalized()*(-JUMP_VELOCITY)
 
@@ -101,14 +102,13 @@ func move(delta):
 			sprite.flip_h = 1
 		else:
 			sprite.flip_h = 0
-		if dash_animation_finished:
-			animation_player.play("run")
+		state = State.WALKING
+		
 
 		if(abs(velocity.x + direction * SPEED * delta) < MAX_SPEED):
 			velocity.x += direction * SPEED * delta
 	else:
-		if dash_animation_finished:
-			animation_player.play("idle")
+		state = State.IDLE
 		if is_on_floor():
 			if abs(velocity.x) > (friction_floor * delta):
 				velocity.x -= velocity.normalized().x * (friction_floor * delta)
@@ -201,11 +201,4 @@ func should_stop_dashing():
 	return target != null && global_position.distance_to(target.global_position) < 30 && is_dashing 
 
 
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "dash":
-		dash_animation_finished = true
-
-
-func _on_animation_player_animation_started(anim_name):
-		if anim_name == "dash":
-			dash_animation_finished = false
+	

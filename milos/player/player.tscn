@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d4l48lfa3qytg"]
+[gd_scene load_steps=23 format=3 uid="uid://d4l48lfa3qytg"]
 
 [ext_resource type="Script" path="res://milos/player/player.gd" id="1_esedo"]
 [ext_resource type="Texture2D" uid="uid://c368mieqduoyp" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://befy05qnk5cmc" path="res://milos/player/animations/dash_3.PNG" id="11_710mc"]
 [ext_resource type="AudioStream" uid="uid://b6aubefwhusk6" path="res://sfx/attack/attack2.wav" id="13_7xu1p"]
 [ext_resource type="PackedScene" uid="uid://pxkra1gdo4o1" path="res://michail/Lamp/Lamp.tscn" id="14_7huuw"]
+[ext_resource type="Script" path="res://milos/player/AnimationController.gd" id="15_cylnv"]
 
 [sub_resource type="Animation" id="Animation_uqji2"]
 length = 0.001
@@ -118,7 +119,11 @@ friction_air = 600
 gravity_muliplier = 2
 dash_cooldown_in_frames = 120
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationController" type="Node" parent="."]
+script = ExtResource("15_cylnv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationController"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_478pa")
 }
@@ -193,5 +198,7 @@ node_a = NodePath("..")
 node_b = NodePath("../Lamp")
 angular_limit_enabled = true
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="AnimationController/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationController/AnimationPlayer" to="AnimationController" method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationController/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_started" from="AnimationController/AnimationPlayer" to="AnimationController" method="_on_animation_player_animation_started"]
