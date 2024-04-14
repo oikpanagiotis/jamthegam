@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://jefgai77tja2"]
+
+[ext_resource type="FontFile" uid="uid://ldf77vw3mmcr" path="res://fonts/dpcomic.ttf" id="1_fxbht"]
+
+[resource]
+default_font = ExtResource("1_fxbht")
