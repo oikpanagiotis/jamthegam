@@ -10,7 +10,8 @@ const COOLDOWN := 500
 var projectile_scn = preload("res://panos/projectile.tscn")
 
 func die() -> void:
-	queue_free()
+	$AudioStreamPlayer2D.play()
+	#queue_free()
 
 func attack(direction: Vector2):
 	const SPEED = 700

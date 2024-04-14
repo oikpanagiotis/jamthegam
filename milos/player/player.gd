@@ -21,6 +21,8 @@ class_name Player extends CharacterBody2D
 @onready var dash_detection_area = $DashDetectionArea
 @onready var animation_player = $AnimationPlayer
 
+@onready var dash_audio_player = $DashAudioPlayer
+
 var is_dashing = false
 var last_direction = 1
 var dash_animation_finished = false
@@ -31,6 +33,18 @@ var target = null
 var arrow_scene = preload("res://milos/arrow/arrow.tscn")
 var current_arrow :Node2D = arrow_scene.instantiate()
 var dash_velocity = Vector2.ZERO
+
+var dash_sound = [
+	preload("res://sfx/attack/attack2.wav"),
+	preload("res://sfx/attack/attack3.wav")]
+var last_played_dash_sound = 0
+
+func play_dash_sound() -> void:
+	var sound = dash_sound[last_played_dash_sound]
+	last_played_dash_sound += 1
+	last_played_dash_sound  =  last_played_dash_sound % len(dash_sound)
+	dash_audio_player.stream = sound
+	dash_audio_player.play()
 
 func _process(delta):
 	if dash_grace_in_frames >0:
@@ -60,6 +74,7 @@ func _physics_process(delta):
 		dash_velocity = (target.global_position - global_position).normalized()*(-JUMP_VELOCITY)
 
 	if should_stop_dashing():
+		current_target.die()
 		is_dashing = false
 		velocity = dash_velocity
 		dash_grace_in_frames = 10
