@@ -7,7 +7,9 @@ class_name Player extends CharacterBody2D
 @export var friction_air = 200
 @export var gravity_muliplier = 2
 @export var coyote_frames = 5
+@export var dash_cooldown_in_frames = 10
 @export var wall_frames = 5
+@export var dash_speed = 20
 @onready var sprite = $Sprite2D
 @onready var left_wall_raycast_lower = $CollisionShape2D/LeftWallRayCastLower
 @onready var right_wall_raycast_lower = $CollisionShape2D/RightWallRayCastLower
@@ -23,7 +25,10 @@ var coyote_timer = 0
 var target = null
 var arrow_scene = preload("res://milos/arrow/arrow.tscn")
 var current_arrow :Node2D = arrow_scene.instantiate()
+var dash_velocity = Vector2.ZERO
 func _process(delta):
+	if(!is_dashing && dash_cooldown_in_frames>0):
+		dash_cooldown_in_frames -=1
 	if is_on_floor():
 		coyote_timer = coyote_frames 
 	else:
@@ -31,11 +36,21 @@ func _process(delta):
 			coyote_timer -= 1
 
 func _physics_process(delta):
-	var current_target:Node2D = get_target()
 
+	var current_target:Node2D = get_target()
 	animate_arrow(current_target)
 	target = current_target
-	if target != null && Input.is_action_pressed("attack"):
+
+	if can_dash():
+		is_dashing = true
+		dash_cooldown_in_frames = 5
+		
+	if should_stop_dashing():
+		is_dashing = false
+		velocity = (target.global_position - global_position).normalized()*(-JUMP_VELOCITY)*2
+		print(velocity)
+
+	if is_dashing:
 		position = position.move_toward(target.global_position,20)
 		velocity = Vector2.ZERO
 	else:
@@ -58,8 +73,9 @@ func move(delta):
 		else:
 			sprite.flip_h = 0
 		animation_player.play("run")
-		#phantom_cam.set_follow_target_offset(Vector2(phantom_cam.get_follow_target_offset().x*direction,phantom_cam.get_follow_target_offset().y))
-		velocity.x += direction * SPEED * delta
+
+		if(abs(velocity.x + direction * SPEED * delta) < MAX_SPEED):
+			velocity.x += direction * SPEED * delta
 	else:
 		animation_player.play("idle")
 		if is_on_floor():
@@ -73,7 +89,7 @@ func move(delta):
 			else:
 				velocity.x=0
 
-	# Handle jump.
+	# Handle jump.a 
 	if Input.is_action_just_pressed("jump") :
 		if is_on_floor()||coyote_timer > 0:
 			velocity.y = JUMP_VELOCITY
@@ -86,8 +102,14 @@ func move(delta):
 
 	if Input.is_action_just_released("jump")&&!is_falling()&&(velocity.y < -300 ):
 		velocity.y += 160
-
-	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
+	
+	#velo7city.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
+	if is_on_floor():
+		velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
+	else:
+		velocity.x = clamp(velocity.x,-MAX_SPEED*1.5,MAX_SPEED*1.5)
+	
+	
 
 func animate_arrow(current_target):
 	if current_target != null:
@@ -126,3 +148,9 @@ func is_fully_on_left_wall():
 	
 func player_is_able_to_jump():
 	return is_on_floor
+
+func can_dash():
+	return target != null && Input.is_action_just_pressed("attack") && dash_cooldown_in_frames==0
+	
+func should_stop_dashing():
+	return target != null && global_position.distance_to(target.global_position) < 30 && is_dashing 
