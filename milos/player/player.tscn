@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://d4l48lfa3qytg"]
 
 [ext_resource type="Script" path="res://milos/player/player.gd" id="1_esedo"]
-[ext_resource type="Texture2D" uid="uid://c368mieqduoyp" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
-[ext_resource type="Texture2D" uid="uid://cp2d55y507geq" path="res://milos/player/animations/idle_2.PNG" id="3_qo3u1"]
-[ext_resource type="Texture2D" uid="uid://b8d5uktwo0gm8" path="res://milos/player/animations/idle_3.PNG" id="4_s5a2u"]
-[ext_resource type="Texture2D" uid="uid://bw0k4w7pdhdu6" path="res://milos/player/animations/run_1.PNG" id="5_ur1hw"]
-[ext_resource type="Texture2D" uid="uid://bude1ylslumib" path="res://milos/player/animations/run_2.PNG" id="6_sivtx"]
-[ext_resource type="Texture2D" uid="uid://didfxwcphdmps" path="res://milos/player/animations/run_3.PNG" id="7_4h4in"]
-[ext_resource type="Texture2D" uid="uid://howjqyqbvjkw" path="res://milos/player/animations/run_4.PNG" id="8_uvqc7"]
-[ext_resource type="Texture2D" uid="uid://c3ghu2e3us1er" path="res://milos/player/animations/run_5.PNG" id="9_ws5fv"]
+[ext_resource type="Texture2D" uid="uid://cdlwn0qwgi4u7" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
+[ext_resource type="Texture2D" uid="uid://d0vf3oyeh6aiv" path="res://milos/player/animations/idle_2.PNG" id="3_qo3u1"]
+[ext_resource type="Texture2D" uid="uid://bwa6ajlryyaw4" path="res://milos/player/animations/idle_3.PNG" id="4_s5a2u"]
+[ext_resource type="Texture2D" uid="uid://b6aybscwrcty" path="res://milos/player/animations/run_1.PNG" id="5_ur1hw"]
+[ext_resource type="Texture2D" uid="uid://byurwkelbofbw" path="res://milos/player/animations/run_2.PNG" id="6_sivtx"]
+[ext_resource type="Texture2D" uid="uid://c2hse5h2ssvi8" path="res://milos/player/animations/run_3.PNG" id="7_4h4in"]
+[ext_resource type="Texture2D" uid="uid://b0timosndy4iw" path="res://milos/player/animations/run_4.PNG" id="8_uvqc7"]
+[ext_resource type="Texture2D" uid="uid://b8l6iyccrup7j" path="res://milos/player/animations/run_5.PNG" id="9_ws5fv"]
 
 [sub_resource type="Animation" id="Animation_uqji2"]
 length = 0.001
@@ -135,3 +135,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
