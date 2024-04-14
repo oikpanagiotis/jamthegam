@@ -25,6 +25,21 @@ tracks/0/keys = {
 "values": [ExtResource("2_ysekg")]
 }
 
+[sub_resource type="Animation" id="Animation_uqji2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ysekg")]
+}
+
 [sub_resource type="Animation" id="Animation_02cwt"]
 resource_name = "idle"
 length = 1.7
@@ -75,6 +90,7 @@ radius = 228.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(78, 43)
 script = ExtResource("1_esedo")
+dash_cooldown_in_frames = 120
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -128,3 +144,9 @@ collision_mask = 3
 visible = false
 shape = SubResource("CircleShape2D_kfdlu")
 one_way_collision_margin = 0.0
+
+[node name="DebugDraw" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
