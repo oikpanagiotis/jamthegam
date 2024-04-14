@@ -1,15 +1,14 @@
 class_name Player extends CharacterBody2D
 
-@export var SPEED = 1000
-@export var MAX_SPEED = 1200
-@export var JUMP_VELOCITY = -600.0
-@export var friction_floor = 1000
-@export var friction_air = 200
-@export var gravity_muliplier = 2
+@export var SPEED = 1600
+@export var MAX_SPEED = 400
+@export var JUMP_VELOCITY = -400
+@export var friction_floor = 2000
+@export var friction_air = 2000
+@export var gravity_muliplier = 4
 @export var coyote_frames = 5
-@export var dash_cooldown_in_frames = 10
+@export var dash_cooldown_in_frames = 30
 @export var wall_frames = 5
-@export var dash_speed = 20
 @onready var sprite = $Sprite2D
 @onready var left_wall_raycast_lower = $CollisionShape2D/LeftWallRayCastLower
 @onready var right_wall_raycast_lower = $CollisionShape2D/RightWallRayCastLower
@@ -49,7 +48,6 @@ func _physics_process(delta):
 		is_dashing = false
 		velocity.y = clamp((target.global_position - global_position).y,-1,1)*(-JUMP_VELOCITY)
 		velocity.x = clamp((target.global_position - global_position).x,-1,1)*(-JUMP_VELOCITY)
-		print(velocity)
 
 	if is_dashing:
 		position = position.move_toward(target.global_position,20)
