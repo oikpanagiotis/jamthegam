@@ -5,9 +5,10 @@ extends Node
 func _ready():
 	player = get_parent()
 var dash_animation_finished = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _physics_process(delta):
 	if player.state != null:
 		match player.state:
 			Player.State.WALKING:

@@ -19,14 +19,12 @@ class_name Player extends CharacterBody2D
 @onready var left_wall_raycast_upper = $CollisionShape2D/LeftWallRayCastUpper
 @onready var right_wall_raycast_upper = $CollisionShape2D/RightWallRayCastUpper
 @onready var dash_detection_area = $DashDetectionArea
-
+@onready var animation_player = $AnimationPlayer
 @onready var dash_audio_player = $DashAudioPlayer
-enum State{WALKING=0,IDLE=1,WALL_RUNNING=2,DASHING = 3}
 
-var state:State = State.IDLE
 var is_dashing = false
 var last_direction = 1
-var dash_animation_finished = false
+var dash_animation_finished = true
 var input = Vector2.ZERO
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * gravity_muliplier
 var coyote_timer = 0
@@ -59,7 +57,6 @@ func _process(delta):
 			coyote_timer -= 1
 
 func _physics_process(delta):
-
 	var current_target:Node2D = get_target()
 	animate_arrow(current_target)
 	target = current_target
@@ -70,7 +67,7 @@ func _physics_process(delta):
 			sprite.flip_h = 1
 		else:
 			sprite.flip_h = 0
-		state = State.DASHING
+		animation_player.play("dash")
 		dash_cooldown_in_frames = 15
 		dash_velocity = (target.global_position - global_position).normalized()*(-JUMP_VELOCITY)
 
@@ -92,6 +89,7 @@ func move(delta):
 
 	if not is_on_floor():
 		if is_on_wall_only()&&is_falling()&&direction:
+			animation_player.play("wall_slide")
 			velocity.y = wall_ride_speed * delta
 		else:
 			velocity.y += gravity * delta
@@ -102,13 +100,14 @@ func move(delta):
 			sprite.flip_h = 1
 		else:
 			sprite.flip_h = 0
-		state = State.WALKING
-		
+		if dash_animation_finished:
+			animation_player.play("run")
 
 		if(abs(velocity.x + direction * SPEED * delta) < MAX_SPEED):
 			velocity.x += direction * SPEED * delta
 	else:
-		state = State.IDLE
+		if dash_animation_finished:
+			animation_player.play("idle")
 		if is_on_floor():
 			if abs(velocity.x) > (friction_floor * delta):
 				velocity.x -= velocity.normalized().x * (friction_floor * delta)
@@ -124,12 +123,14 @@ func move(delta):
 	if Input.is_action_just_pressed("jump") :
 		if is_on_floor()||coyote_timer > 0:
 			velocity.y = JUMP_VELOCITY
+			animation_player.play("jump")
 		if !is_on_floor() &&(is_fully_on_left_wall() || is_fully_on_right_wall()):
 			velocity.y = JUMP_VELOCITY
 			if is_fully_on_left_wall():
 				velocity.x = - JUMP_VELOCITY 
 			elif is_fully_on_right_wall():
 				velocity.x = JUMP_VELOCITY 
+			animation_player.play("jump")
 
 	#variable jump
 	if Input.is_action_just_released("jump")&&!is_falling()&&(velocity.y < -300):
@@ -201,4 +202,11 @@ func should_stop_dashing():
 	return target != null && global_position.distance_to(target.global_position) < 30 && is_dashing 
 
 
-	
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "dash":
+		dash_animation_finished = true
+
+
+func _on_animation_player_animation_started(anim_name):
+		if anim_name == "dash":
+			dash_animation_finished = false
