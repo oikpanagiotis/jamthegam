@@ -123,18 +123,20 @@ func move(delta):
 	if Input.is_action_just_pressed("jump") :
 		if is_on_floor()||coyote_timer > 0:
 			velocity.y = JUMP_VELOCITY
-			animation_player.play("jump")
 		if !is_on_floor() &&(is_fully_on_left_wall() || is_fully_on_right_wall()):
 			velocity.y = JUMP_VELOCITY
 			if is_fully_on_left_wall():
 				velocity.x = - JUMP_VELOCITY 
 			elif is_fully_on_right_wall():
 				velocity.x = JUMP_VELOCITY 
-			animation_player.play("jump")
-
+			
+	
 	#variable jump
 	if Input.is_action_just_released("jump")&&!is_falling()&&(velocity.y < -300):
 		velocity.y += 160
+		
+	if velocity.y != 0 :
+		animation_player.play("jump")
 	#Trash code please fix
 	velocity.y = clamp(velocity.y,-gravity_terminal_velocity*1000,gravity_terminal_velocity)
 	velocity.x = clamp(velocity.x,-MAX_SPEED,MAX_SPEED)
