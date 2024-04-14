@@ -9,7 +9,7 @@ const COOLDOWN := 500
 
 var projectile_scn = preload("res://panos/projectile.tscn")
 
-func die() -> None:
+func die() -> void:
 	queue_free()
 
 func attack(direction: Vector2):
