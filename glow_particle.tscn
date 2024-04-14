@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://2imsqc0yh07w"]
+
+[ext_resource type="Texture2D" uid="uid://cn0uxh8mbmlwf" path="res://michail/Particles/pixil-frame-0.png" id="1_mwl40"]
+
+[sub_resource type="Environment" id="Environment_ga0f3"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.71
+glow_strength = 1.27
+glow_blend_mode = 0
+
+[node name="GlowParticle" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ga0f3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(216, 222)
+scale = Vector2(4, 4)
+texture = ExtResource("1_mwl40")
