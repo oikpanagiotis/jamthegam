@@ -9,4 +9,5 @@ script = ExtResource("1_1mk4t")
 metadata/_edit_group_ = true
 
 [node name="Indicator" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_8e15t")
