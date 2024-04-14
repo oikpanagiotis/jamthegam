@@ -135,3 +135,7 @@ rotation = 2.97881
 collision_layer = 2
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_w3rt8")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
