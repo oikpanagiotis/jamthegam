@@ -10,6 +10,7 @@ const COOLDOWN := 500
 var projectile_scn = preload("res://panos/projectile.tscn")
 
 func die() -> void:
+	GameEvents.emit_signal("minion_killed")
 	$AudioStreamPlayer2D.play()
 	#queue_free()
 
