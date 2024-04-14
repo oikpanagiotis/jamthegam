@@ -14,11 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://befy05qnk5cmc" path="res://milos/player/animations/dash_3.PNG" id="11_710mc"]
 [ext_resource type="AudioStream" uid="uid://b6aubefwhusk6" path="res://sfx/attack/attack2.wav" id="13_7xu1p"]
 [ext_resource type="PackedScene" uid="uid://pxkra1gdo4o1" path="res://michail/Lamp/Lamp.tscn" id="14_7huuw"]
-[ext_resource type="Texture2D" uid="uid://buyumk5chmit4" path="res://milos/player/animations/wall_slide_1.PNG" id="15_ova58"]
-[ext_resource type="Texture2D" uid="uid://dvbuhbul55ajs" path="res://milos/player/animations/wall_slide_2.PNG" id="16_vibgh"]
 [ext_resource type="Texture2D" uid="uid://h7u1s15be10l" path="res://milos/player/animations/jump_1.PNG" id="17_5gxl2"]
 [ext_resource type="Texture2D" uid="uid://bl8jt2v6t41ua" path="res://milos/player/animations/jump_2.PNG" id="18_6srty"]
+[ext_resource type="Texture2D" uid="uid://bqhkomxke5jj6" path="res://milos/player/animations/wall_slide_1.png" id="18_niakb"]
 [ext_resource type="Texture2D" uid="uid://ses6k1dy74hd" path="res://milos/player/animations/jump_3.PNG" id="19_q4wdn"]
+[ext_resource type="Texture2D" uid="uid://c6pmow1jkj2dp" path="res://milos/player/animations/wall_slide_2.png" id="19_un42v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
 size = Vector2(14, 41.5)
@@ -89,6 +89,23 @@ tracks/0/keys = {
 "values": [ExtResource("2_ysekg"), ExtResource("3_qo3u1"), ExtResource("4_s5a2u"), ExtResource("3_qo3u1")]
 }
 
+[sub_resource type="Animation" id="Animation_ghnt5"]
+resource_name = "jump"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_5gxl2"), ExtResource("18_6srty"), ExtResource("19_q4wdn")]
+}
+
 [sub_resource type="Animation" id="Animation_0ido5"]
 resource_name = "run"
 length = 0.5
@@ -108,25 +125,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hdrja"]
 resource_name = "wall_slide"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("15_ova58"), ExtResource("16_vibgh")]
-}
-
-[sub_resource type="Animation" id="Animation_ghnt5"]
-resource_name = "jump"
 length = 0.3
 loop_mode = 1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,10 +135,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.11),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("17_5gxl2"), ExtResource("18_6srty"), ExtResource("19_q4wdn")]
+"values": [ExtResource("18_niakb"), ExtResource("19_un42v")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_478pa"]

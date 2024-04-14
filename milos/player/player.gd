@@ -88,7 +88,7 @@ func move(delta):
 	var direction = Input.get_axis("left", "right")
 
 	if not is_on_floor():
-		if is_on_wall_only()&&is_falling()&&direction:
+		if (is_fully_on_left_wall() || is_fully_on_right_wall())&&is_falling()&&direction:
 			animation_player.play("wall_slide")
 			velocity.y = wall_ride_speed * delta
 		else:
