@@ -36,6 +36,8 @@ var arrow_scene = preload("res://milos/arrow/arrow.tscn")
 var current_arrow :Node2D = arrow_scene.instantiate()
 var dash_velocity = Vector2.ZERO
 
+var prev_on_floor = true
+
 var dash_sound = [
 	preload("res://sfx/attack/attack2.wav"),
 	preload("res://sfx/attack/attack3.wav")]
@@ -67,6 +69,7 @@ func _physics_process(delta):
 	target = current_target
 	
 	if can_dash():
+		Effects.controller_vibrate_strong()
 		is_dashing = true 
 		if  target.global_position.x - global_position.x < 0:
 			sprite.flip_h = 1
@@ -88,6 +91,10 @@ func _physics_process(delta):
 	elif dash_grace_in_frames == 0:
 		move(delta)
 
+	if is_on_floor() and not prev_on_floor:
+		Effects.controller_vibrate_weak()
+
+	prev_on_floor = is_on_floor()
 
 	var coeff = 30 * delta
 	focus_point.global_position = focus_point.global_position.lerp(self.global_position, coeff)
