@@ -3,8 +3,9 @@ extends Node
 var intro = preload("res://scenes/start_screen/start_screen.tscn")
 var hud = preload("res://scenes/hud.tscn")
 var level_1 = preload("res://michail/levels/level_1.tscn")
-#var level_2 = preload("res://michail/levels/level_2.tscn")
+var level_2 = preload("res://michail/levels/level_2.tscn")
 var level_3 = preload("res://michail/levels/level_3.tscn")
+var level_4 = preload("res://michail/levels/level_4.tscn")
 var levels_beat = 0
 
 var current_level = null
@@ -13,7 +14,9 @@ var player = null
 
 var LEVELS = {
 	1: level_1,
-	2: level_3,
+	2: level_2,
+	3: level_3,
+	4: level_4,
 }
 
 func start_level_and_get_player(level_number: int) -> Player:
