@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c128c2eeb5c5x"]
 
 [ext_resource type="Script" path="res://world/PlayerSpawnPoint.gd" id="1_1mk4t"]
-[ext_resource type="Texture2D" uid="uid://72qthfp3wnli" path="res://icon.svg" id="2_8e15t"]
+[ext_resource type="Texture2D" uid="uid://c1euxqw6b7a01" path="res://icon.svg" id="2_8e15t"]
 
 [node name="PlayerSpawnPoint" type="Node2D"]
 position = Vector2(138, -188)

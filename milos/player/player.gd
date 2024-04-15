@@ -22,6 +22,9 @@ class_name Player extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var dash_audio_player = $DashAudioPlayer
 
+@onready var focus_point = $FocusPoint
+
+
 var is_dashing = false
 var last_direction = 1
 var dash_animation_finished = true
@@ -82,6 +85,12 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	elif dash_grace_in_frames == 0:
 		move(delta)
+
+
+	var coeff = 30 * delta
+	focus_point.global_position = focus_point.global_position.lerp(self.global_position, coeff)
+	focus_point.global_position.x += velocity.x * 20 * delta
+	focus_point.global_position.y += velocity.y * 8 * delta
 	move_and_slide()
 	
 func move(delta):
