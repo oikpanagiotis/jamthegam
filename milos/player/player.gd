@@ -41,6 +41,12 @@ var dash_sound = [
 	preload("res://sfx/attack/attack3.wav")]
 var last_played_dash_sound = 0
 
+func reset()->void:
+	global_position = $PlayerSpawnPoint.global_position
+
+func die()->void:
+	reset()
+
 func play_dash_sound() -> void:
 	var sound = dash_sound[last_played_dash_sound]
 	last_played_dash_sound += 1
@@ -212,7 +218,6 @@ func can_dash():
 	
 func should_stop_dashing():
 	return target != null && global_position.distance_to(target.global_position) < 30 && is_dashing 
-
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "dash":
