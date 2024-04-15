@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbw7dmdllgxbl"]
+[gd_scene load_steps=8 format=3 uid="uid://cbw7dmdllgxbl"]
 
 [ext_resource type="PackedScene" uid="uid://c3668ixdvmqo0" path="res://michail/Tileset/TileMap.tscn" id="2_7n0ct"]
 [ext_resource type="PackedScene" path="res://scenes/parallax_background.tscn" id="3_gcm6y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ct1m1u02syb23" path="res://panos/ghost/ghost.tscn" id="5_ayoo6"]
 [ext_resource type="PackedScene" path="res://scenes/player_spawn_point.tscn" id="6_ulm54"]
 [ext_resource type="PackedScene" uid="uid://dvxis8eubg55a" path="res://milos/cultist/Cultist.tscn" id="7_1gltg"]
+[ext_resource type="AudioStream" uid="uid://dxun7aywbr2sq" path="res://sfx/music/1-28-encore-201132.mp3" id="7_qkt7o"]
 
 [node name="Level5" type="Node2D"]
 
@@ -33,3 +34,7 @@ position = Vector2(3152, 7)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("6_ulm54")]
 position = Vector2(248, 346)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qkt7o")
+volume_db = -20.0

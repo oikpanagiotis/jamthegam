@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dh46opwror2pc" path="res://world/parallax/BG05.png" id="10_h0xoh"]
 [ext_resource type="Texture2D" uid="uid://b4i3sl3238vei" path="res://world/parallax/BG06.png" id="11_sxmx5"]
 [ext_resource type="AudioStream" uid="uid://dxun7aywbr2sq" path="res://sfx/music/1-28-encore-201132.mp3" id="11_ub8je"]
-[ext_resource type="PackedScene" uid="uid://dvxis8eubg55a" path="res://milos/cultist/node_2d.tscn" id="13_cyotx"]
+[ext_resource type="PackedScene" uid="uid://dvxis8eubg55a" path="res://milos/cultist/Cultist.tscn" id="13_cyotx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyg2f"]
 texture = ExtResource("1_efkon")

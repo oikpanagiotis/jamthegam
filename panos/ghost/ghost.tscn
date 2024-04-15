@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://ct1m1u02syb23"]
 
 [ext_resource type="Script" path="res://panos/ghost/ghost.gd" id="1_uik0w"]
-[ext_resource type="Texture2D" uid="uid://b4iyxmpejnugw" path="res://panos/ghost/animations/IMG_1154.PNG" id="2_mr17g"]
+[ext_resource type="Texture2D" uid="uid://clbcevapld0tj" path="res://panos/ghost/animations/IMG_1154.PNG" id="2_mr17g"]
 [ext_resource type="PackedScene" uid="uid://dayevh1hk5b0s" path="res://scenes/player_sensor.tscn" id="3_mii2e"]
-[ext_resource type="AudioStream" uid="uid://bmx4dg6uq6075" path="res://sfx/impact/impact1.wav" id="4_pxlrd"]
-[ext_resource type="Texture2D" uid="uid://cvatc2620jc0s" path="res://panos/ghost/animations/IMG_1155.PNG" id="5_6pdqo"]
-[ext_resource type="Texture2D" uid="uid://bctrwwr0oa4ho" path="res://panos/ghost/animations/IMG_1156.PNG" id="6_xeelm"]
+[ext_resource type="AudioStream" uid="uid://d2iov6esmcwu2" path="res://sfx/impact/impact1.wav" id="4_pxlrd"]
+[ext_resource type="Texture2D" uid="uid://c66lg7qi4tudp" path="res://panos/ghost/animations/IMG_1155.PNG" id="5_6pdqo"]
+[ext_resource type="Texture2D" uid="uid://c35lhbst7nvbs" path="res://panos/ghost/animations/IMG_1156.PNG" id="6_xeelm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d1so"]
 radius = 14.0357
