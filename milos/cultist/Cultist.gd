@@ -23,7 +23,7 @@ func _physics_process(delta):
 				anim_player.play("idle")
 			else:
 				hide()
-				get_parent().get_parent().next_level()
+				GameEvents.emit_signal("cultist_killed")
 
 
 func _on_animation_player_animation_finished(anim_name):

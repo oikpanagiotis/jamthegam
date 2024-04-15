@@ -4,7 +4,7 @@ var intro = preload("res://scenes/start_screen/start_screen.tscn")
 var hud = preload("res://scenes/hud.tscn")
 var level_1 = preload("res://michail/levels/level_1.tscn")
 #var level_2 = preload("res://michail/levels/level_2.tscn")
-var level_3 = preload("res://michail/levels/level_3_m.tscn")
+var level_3 = preload("res://michail/levels/level_3.tscn")
 var levels_beat = 0
 
 var current_level = null
