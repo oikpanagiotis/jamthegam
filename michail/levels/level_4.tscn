@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="1_mywob"]
 [ext_resource type="PackedScene" uid="uid://c3668ixdvmqo0" path="res://michail/Tileset/TileMap.tscn" id="2_7n0ct"]
-[ext_resource type="PackedScene" uid="uid://d124eern2hg1q" path="res://scenes/parallax_background.tscn" id="3_gcm6y"]
+[ext_resource type="PackedScene" path="res://scenes/parallax_background.tscn" id="3_gcm6y"]
 [ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/ghost/ghost_special.tscn" id="4_4kgp5"]
 [ext_resource type="PackedScene" uid="uid://ct1m1u02syb23" path="res://panos/ghost/ghost.tscn" id="5_ayoo6"]
 
@@ -20,18 +20,28 @@ layer_0/tile_data = PackedInt32Array(1441796, 1, 1, 1376260, 131073, 1, 1310724,
 
 [node name="SpecialGhost" parent="Enemies" instance=ExtResource("4_4kgp5")]
 position = Vector2(1451, 28)
+collision_layer = 2
 
 [node name="Ghost1" parent="Enemies" instance=ExtResource("5_ayoo6")]
 position = Vector2(917, 281)
+collision_layer = 2
 
 [node name="Ghost3" parent="Enemies" instance=ExtResource("5_ayoo6")]
 position = Vector2(2574, -210)
+collision_layer = 2
 
 [node name="Ghost4" parent="Enemies" instance=ExtResource("5_ayoo6")]
 position = Vector2(2569, -658)
+collision_layer = 2
+
+[node name="Ghost5" parent="Enemies" instance=ExtResource("5_ayoo6")]
+position = Vector2(2569, -429)
+collision_layer = 2
 
 [node name="SpecialGhost2" parent="Enemies" instance=ExtResource("4_4kgp5")]
 position = Vector2(2982, -733)
+collision_layer = 2
 
 [node name="SpecialGhost3" parent="Enemies" instance=ExtResource("4_4kgp5")]
 position = Vector2(3436, -670)
+collision_layer = 2
