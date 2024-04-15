@@ -31,7 +31,8 @@ func initialize_hud(player: Player) -> void:
 func respawn_player() -> void:
 	var current_level_number = levels_beat + 1
 	current_level.queue_free()
-	start_level_and_get_player(current_level_number)
+	var player = start_level_and_get_player(current_level_number)
+	initialize_hud(player)
 
 
 func _ready() -> void:
