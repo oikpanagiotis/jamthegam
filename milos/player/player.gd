@@ -41,6 +41,7 @@ var dash_sound = [
 	preload("res://sfx/attack/attack3.wav")]
 var last_played_dash_sound = 0
 
+
 func play_dash_sound() -> void:
 	var sound = dash_sound[last_played_dash_sound]
 	last_played_dash_sound += 1
@@ -63,6 +64,7 @@ func _physics_process(delta):
 	var current_target:Node2D = get_target()
 	animate_arrow(current_target)
 	target = current_target
+	
 
 	if can_dash():
 		is_dashing = true 
@@ -177,7 +179,7 @@ func get_target():
 func get_enemies_in_range():
 	var enemies = []
 	for body in dash_detection_area.get_overlapping_bodies():
-		if body.is_in_group("agent"):
+		if body.is_in_group("agent") && not body.is_dead:
 			enemies.append(body)
 
 	return enemies
@@ -213,12 +215,10 @@ func can_dash():
 func should_stop_dashing():
 	return target != null && global_position.distance_to(target.global_position) < 30 && is_dashing 
 
-
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "dash":
 		dash_animation_finished = true
-
-
+		
 func _on_animation_player_animation_started(anim_name):
 		if anim_name == "dash":
 			dash_animation_finished = false

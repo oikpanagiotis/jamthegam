@@ -1,0 +1,256 @@
+[gd_scene load_steps=31 format=3 uid="uid://d4l48lfa3qytg"]
+
+[ext_resource type="Script" path="res://milos/player/player.gd" id="1_esedo"]
+[ext_resource type="Texture2D" uid="uid://c368mieqduoyp" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
+[ext_resource type="Texture2D" uid="uid://cp2d55y507geq" path="res://milos/player/animations/idle_2.PNG" id="3_qo3u1"]
+[ext_resource type="Script" path="res://milos/player/PlayerCamera.gd" id="3_w8y1y"]
+[ext_resource type="Texture2D" uid="uid://b8d5uktwo0gm8" path="res://milos/player/animations/idle_3.PNG" id="4_s5a2u"]
+[ext_resource type="Texture2D" uid="uid://bw0k4w7pdhdu6" path="res://milos/player/animations/run_1.PNG" id="5_ur1hw"]
+[ext_resource type="Texture2D" uid="uid://bude1ylslumib" path="res://milos/player/animations/run_2.PNG" id="6_sivtx"]
+[ext_resource type="Texture2D" uid="uid://didfxwcphdmps" path="res://milos/player/animations/run_3.PNG" id="7_4h4in"]
+[ext_resource type="Texture2D" uid="uid://howjqyqbvjkw" path="res://milos/player/animations/run_4.PNG" id="8_uvqc7"]
+[ext_resource type="Texture2D" uid="uid://c3ghu2e3us1er" path="res://milos/player/animations/run_5.PNG" id="9_ws5fv"]
+[ext_resource type="Texture2D" uid="uid://cjce44p8hryth" path="res://milos/player/animations/dash_2.PNG" id="10_6winx"]
+[ext_resource type="Texture2D" uid="uid://cqpeipordqtu5" path="res://milos/player/animations/dash_4.PNG" id="10_42iyi"]
+[ext_resource type="Texture2D" uid="uid://befy05qnk5cmc" path="res://milos/player/animations/dash_3.PNG" id="11_710mc"]
+[ext_resource type="AudioStream" uid="uid://b6aubefwhusk6" path="res://sfx/attack/attack2.wav" id="13_7xu1p"]
+[ext_resource type="PackedScene" uid="uid://pxkra1gdo4o1" path="res://michail/Lamp/Lamp.tscn" id="14_7huuw"]
+[ext_resource type="Texture2D" uid="uid://h7u1s15be10l" path="res://milos/player/animations/jump_1.PNG" id="17_5gxl2"]
+[ext_resource type="Texture2D" uid="uid://bl8jt2v6t41ua" path="res://milos/player/animations/jump_2.PNG" id="18_6srty"]
+[ext_resource type="Texture2D" uid="uid://bqhkomxke5jj6" path="res://milos/player/animations/wall_slide_1.png" id="18_niakb"]
+[ext_resource type="Texture2D" uid="uid://ses6k1dy74hd" path="res://milos/player/animations/jump_3.PNG" id="19_q4wdn"]
+[ext_resource type="Texture2D" uid="uid://c6pmow1jkj2dp" path="res://milos/player/animations/wall_slide_2.png" id="19_un42v"]
+[ext_resource type="PackedScene" path="res://milos/player/focus_point.tscn" id="20_idjcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
+size = Vector2(14, 41.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfdlu"]
+radius = 228.0
+
+[sub_resource type="Animation" id="Animation_uqji2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ysekg")]
+}
+
+[sub_resource type="Animation" id="Animation_k4ruu"]
+resource_name = "dash"
+length = 0.07
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_6winx"), ExtResource("11_710mc"), ExtResource("10_42iyi")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_dash_sound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_02cwt"]
+resource_name = "idle"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ysekg"), ExtResource("3_qo3u1"), ExtResource("4_s5a2u"), ExtResource("3_qo3u1")]
+}
+
+[sub_resource type="Animation" id="Animation_ghnt5"]
+resource_name = "jump"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_5gxl2"), ExtResource("18_6srty"), ExtResource("19_q4wdn")]
+}
+
+[sub_resource type="Animation" id="Animation_0ido5"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_ur1hw"), ExtResource("6_sivtx"), ExtResource("7_4h4in"), ExtResource("8_uvqc7"), ExtResource("9_ws5fv")]
+}
+
+[sub_resource type="Animation" id="Animation_hdrja"]
+resource_name = "wall_slide"
+length = 0.3
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("18_niakb"), ExtResource("19_un42v")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_478pa"]
+_data = {
+"RESET": SubResource("Animation_uqji2"),
+"dash": SubResource("Animation_k4ruu"),
+"idle": SubResource("Animation_02cwt"),
+"jump": SubResource("Animation_ghnt5"),
+"run": SubResource("Animation_0ido5"),
+"wall_slide": SubResource("Animation_hdrja")
+}
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(78, 43)
+script = ExtResource("1_esedo")
+SPEED = null
+MAX_SPEED = null
+JUMP_VELOCITY = -800
+gravity_terminal_velocity = null
+friction_floor = 1500
+friction_air = 600
+gravity_muliplier = 2
+wall_ride_speed = null
+coyote_frames = null
+dash_cooldown_in_frames = 120
+dash_grace_in_frames = null
+wall_frames = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ysekg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_e2y3g")
+
+[node name="LeftWallRayCastLower" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, 10)
+rotation = 1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightWallRayCastLower" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, 10)
+rotation = -1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="LeftWallRayCastUpper" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, -10)
+rotation = 1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="RightWallRayCastUpper" type="RayCast2D" parent="CollisionShape2D"]
+position = Vector2(0, -10)
+rotation = -1.5708
+exclude_parent = false
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="DashDetectionArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DashDetectionArea"]
+visible = false
+shape = SubResource("CircleShape2D_kfdlu")
+one_way_collision_margin = 0.0
+
+[node name="DebugDraw" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("focus_pont")]
+script = ExtResource("3_w8y1y")
+focus_pont = NodePath("../FocusPoint")
+speed = 1.0
+
+[node name="DashAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-78, -43)
+stream = ExtResource("13_7xu1p")
+
+[node name="Lamp" parent="." instance=ExtResource("14_7huuw")]
+visible = false
+position = Vector2(-28, -13)
+mass = 30.0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(-27, -13)
+node_a = NodePath("..")
+node_b = NodePath("../Lamp")
+angular_limit_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_478pa")
+}
+autoplay = "idle"
+
+[node name="FocusPoint" parent="." instance=ExtResource("20_idjcj")]
+visible = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

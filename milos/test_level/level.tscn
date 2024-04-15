@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="1_81hit"]
 [ext_resource type="PackedScene" uid="uid://dk21pppma0f7v" path="res://michail/TileMap.tscn" id="2_jg23i"]
-[ext_resource type="PackedScene" path="res://michail/TestTileMap.tscn" id="2_jyail"]
+[ext_resource type="PackedScene" uid="uid://bhwpv0anhv6vs" path="res://michail/TestTileMap.tscn" id="2_jyail"]
 
 [node name="level" type="Node"]
 

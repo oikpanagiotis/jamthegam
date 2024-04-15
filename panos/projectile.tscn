@@ -1,20 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdt4esamatrok"]
+[gd_scene load_steps=11 format=3 uid="uid://cjei8g31urilj"]
 
 [ext_resource type="Script" path="res://panos/projectile.gd" id="1_617od"]
-[ext_resource type="Texture2D" uid="uid://72qthfp3wnli" path="res://icon.svg" id="1_wj281"]
+[ext_resource type="Texture2D" uid="uid://bkw35dep1b6bw" path="res://panos/ghost/animations/fireball/FB001.png" id="2_gsa10"]
+[ext_resource type="Texture2D" uid="uid://dyfjmqlowtjle" path="res://panos/ghost/animations/fireball/FB002.png" id="3_ry6xy"]
+[ext_resource type="Texture2D" uid="uid://bom0a3mcqqgna" path="res://panos/ghost/animations/fireball/FB003.png" id="4_4dwgq"]
+[ext_resource type="Texture2D" uid="uid://b6b72yy8vlb54" path="res://panos/ghost/animations/fireball/FB004.png" id="5_luntx"]
+[ext_resource type="Texture2D" uid="uid://dqs8iwi45nkel" path="res://panos/ghost/animations/fireball/FB005.png" id="6_lelr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4eku8"]
 radius = 13.0384
+
+[sub_resource type="Animation" id="Animation_ll6sj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_gsa10")]
+}
+
+[sub_resource type="Animation" id="Animation_0o8cd"]
+resource_name = "attack"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_gsa10"), ExtResource("3_ry6xy"), ExtResource("4_4dwgq"), ExtResource("5_luntx"), ExtResource("6_lelr0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_km6ea"]
+_data = {
+"RESET": SubResource("Animation_ll6sj"),
+"attack": SubResource("Animation_0o8cd")
+}
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_617od")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.0901961, 1, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_wj281")
+modulate = Color(0.223529, 0.615686, 1, 1)
+position = Vector2(8, 0)
+rotation = -3.14159
+scale = Vector2(0.808687, 1.03694)
+texture = ExtResource("2_gsa10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4eku8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_km6ea")
+}
+autoplay = "attack"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

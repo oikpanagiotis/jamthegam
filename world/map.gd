@@ -9,3 +9,11 @@ func _ready():
 
 func get_player() -> Player:
 	return $Player
+
+func get_spawn() -> Node2D:
+	return $PlayerSpawnPoint
+
+func reset() -> void:
+	for node in $Enemies.get_children():
+		if node.is_in_group("agent"):
+			node.reset()
