@@ -16,10 +16,6 @@ layer_0/tile_data = PackedInt32Array(1245188, 458753, 3, 1179652, 458753, 2, 111
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Ghost" parent="Enemies" instance=ExtResource("5_ayoo6")]
-position = Vector2(381, 338)
-collision_layer = 2
-
 [node name="Ghost2" parent="Enemies" instance=ExtResource("5_ayoo6")]
 position = Vector2(913, 237)
 collision_layer = 2
@@ -36,4 +32,4 @@ collision_layer = 2
 position = Vector2(3152, 7)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("6_ulm54")]
-position = Vector2(216, 307)
+position = Vector2(248, 346)

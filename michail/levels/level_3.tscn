@@ -30,6 +30,10 @@ collision_layer = 2
 position = Vector2(1437, 275)
 collision_layer = 2
 
+[node name="Ghost6" parent="Enemies" instance=ExtResource("5_7dnp2")]
+position = Vector2(2056, 351)
+collision_layer = 2
+
 [node name="Ghost3" parent="Enemies" instance=ExtResource("4_pxst8")]
 position = Vector2(2825, 7)
 collision_layer = 2
