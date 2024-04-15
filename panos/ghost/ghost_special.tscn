@@ -10,6 +10,21 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d1so"]
 radius = 14.0357
 
+[sub_resource type="Animation" id="Animation_caiwk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1cfnx")]
+}
+
 [sub_resource type="Animation" id="Animation_8a40a"]
 resource_name = "indle"
 length = 0.6
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_1cfnx"), ExtResource("5_sbddg"), ExtResource("6_qmmgl")]
-}
-
-[sub_resource type="Animation" id="Animation_caiwk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_1cfnx")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihkhk"]

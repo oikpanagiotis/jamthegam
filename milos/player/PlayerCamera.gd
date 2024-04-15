@@ -9,4 +9,5 @@ func _ready():
 
 func _process(delta) -> void:
 	var focus_point := focus_pont.global_position
-	self.global_position = self.global_position.lerp(focus_point, delta * speed)
+	self.global_position.x = self.global_position.lerp(focus_point, delta * speed).x
+	self.global_position.y = self.global_position.lerp(focus_point, delta * speed/10).y
