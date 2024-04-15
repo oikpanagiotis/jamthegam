@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bww0prsfilate"]
 
-[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/ghost/bat.tscn" id="1_2v7jx"]
+[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/ghost/ghost_special.tscn" id="1_2v7jx"]
 [ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="2_hekse"]
 
 

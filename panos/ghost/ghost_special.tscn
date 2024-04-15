@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://3tj54of4mobb"]
 
-[ext_resource type="Script" path="res://panos/ghost/ghost.gd" id="1_uik0w"]
-[ext_resource type="Texture2D" uid="uid://clbcevapld0tj" path="res://panos/ghost/animations/IMG_1154.PNG" id="2_mr17g"]
-[ext_resource type="PackedScene" uid="uid://dayevh1hk5b0s" path="res://scenes/player_sensor.tscn" id="3_mii2e"]
-[ext_resource type="AudioStream" uid="uid://d2iov6esmcwu2" path="res://sfx/impact/impact1.wav" id="4_pxlrd"]
-[ext_resource type="Texture2D" uid="uid://c66lg7qi4tudp" path="res://panos/ghost/animations/IMG_1155.PNG" id="5_6pdqo"]
-[ext_resource type="Texture2D" uid="uid://c35lhbst7nvbs" path="res://panos/ghost/animations/IMG_1156.PNG" id="6_xeelm"]
+[ext_resource type="Script" path="res://panos/ghost/ghost.gd" id="1_fjajd"]
+[ext_resource type="Texture2D" uid="uid://clbcevapld0tj" path="res://panos/ghost/animations/IMG_1154.PNG" id="2_1cfnx"]
+[ext_resource type="PackedScene" uid="uid://dayevh1hk5b0s" path="res://scenes/player_sensor.tscn" id="3_kfj1i"]
+[ext_resource type="AudioStream" uid="uid://d2iov6esmcwu2" path="res://sfx/impact/impact1.wav" id="4_6vqu5"]
+[ext_resource type="Texture2D" uid="uid://c66lg7qi4tudp" path="res://panos/ghost/animations/IMG_1155.PNG" id="5_sbddg"]
+[ext_resource type="Texture2D" uid="uid://c35lhbst7nvbs" path="res://panos/ghost/animations/IMG_1156.PNG" id="6_qmmgl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d1so"]
 radius = 14.0357
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_mr17g"), ExtResource("5_6pdqo"), ExtResource("6_xeelm")]
+"values": [ExtResource("2_1cfnx"), ExtResource("5_sbddg"), ExtResource("6_qmmgl")]
 }
 
 [sub_resource type="Animation" id="Animation_caiwk"]
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_mr17g")]
+"values": [ExtResource("2_1cfnx")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihkhk"]
@@ -49,21 +49,23 @@ _data = {
 }
 
 [node name="Ghost" type="CharacterBody2D" groups=["agent", "anchor"]]
-script = ExtResource("1_uik0w")
+script = ExtResource("1_fjajd")
+can_shoot_projectiles = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.223529, 0.615686, 1, 1)
 texture_filter = 1
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_mr17g")
+texture = ExtResource("2_1cfnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_4d1so")
 
-[node name="PlayerSensor" parent="." instance=ExtResource("3_mii2e")]
+[node name="PlayerSensor" parent="." instance=ExtResource("3_kfj1i")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_pxlrd")
+stream = ExtResource("4_6vqu5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

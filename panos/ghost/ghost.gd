@@ -8,10 +8,11 @@ const COOLDOWN := 500
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
-
+@export var can_shoot_projectiles:bool = false
 var flight_direction = 1
 var flight_speed = 40
 var direction_switch_limit = 15
+
 var projectile_scn = preload("res://panos/projectile.tscn")
 
 func die() -> void:
@@ -32,7 +33,6 @@ func on_player_seen(player: CharacterBody2D) -> void:
 
 func _ready() -> void:
 	animation_player.play("indle")
-
 	if is_in_group("agent"):
 		assert(has_method("die"), "All agents must implement die")
 
@@ -41,16 +41,16 @@ func _physics_process(delta) -> void:
 		flight_direction = -flight_direction
 	sprite.offset.y +=flight_direction*delta*flight_speed
 
-	
-	if seen and player_ref != null:
-		cooldown_left -= delta
-		
-		var can_attack := false
-		if cooldown_left <= 0:
-			can_attack = true
-			cooldown_left = COOLDOWN
-		
-		if can_attack:
-			var player_dir = (player_ref.global_position - global_position).normalized()
-			attack(player_dir)
-		
+	if can_shoot_projectiles:
+		if seen and player_ref != null:
+			cooldown_left -= delta
+			
+			var can_attack := false
+			if cooldown_left <= 0:
+				can_attack = true
+				cooldown_left = COOLDOWN
+			
+			if can_attack:
+				var player_dir = (player_ref.global_position - global_position).normalized()
+				attack(player_dir)
+			

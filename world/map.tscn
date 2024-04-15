@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://defnt4hshxnfw"]
+[gd_scene load_steps=15 format=3 uid="uid://defnt4hshxnfw"]
 
 [ext_resource type="Texture2D" uid="uid://bn47c1qwkuefq" path="res://world/world_tiles.png" id="1_efkon"]
 [ext_resource type="Script" path="res://world/map.gd" id="1_sl4yd"]
-[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/ghost/bat.tscn" id="3_421kw"]
+[ext_resource type="PackedScene" uid="uid://ct1m1u02syb23" path="res://panos/ghost/ghost.tscn" id="3_r5mj3"]
+[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/ghost/ghost_special.tscn" id="3_x2ufr"]
 [ext_resource type="PackedScene" path="res://scenes/player_spawn_point.tscn" id="5_w3rt8"]
 [ext_resource type="Texture2D" uid="uid://eikpfmoyshqy" path="res://world/parallax/BG01.png" id="6_5a71o"]
 [ext_resource type="Texture2D" uid="uid://834r3ne5it1l" path="res://world/parallax/BG02.png" id="7_t5pr0"]
@@ -86,44 +87,15 @@ layer_0/tile_data = PackedInt32Array(65524, 196608, 0, 65525, 327680, 0, 65526, 
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Bat4" parent="Enemies" instance=ExtResource("3_421kw")]
+[node name="Ghost_2" parent="Enemies" instance=ExtResource("3_x2ufr")]
 position = Vector2(628, -232)
 collision_layer = 2
+can_shoot_projectiles = true
 
-[node name="Bat5" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(1043, -197)
-rotation = 2.97881
+[node name="Ghost" parent="Enemies" instance=ExtResource("3_r5mj3")]
+position = Vector2(1571, -104)
 collision_layer = 2
-
-[node name="Bat6" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(1635, -170)
-rotation = 2.97881
-collision_layer = 2
-
-[node name="Bat8" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(2471, -218)
-rotation = 2.97881
-collision_layer = 2
-
-[node name="Bat9" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(2831, -356)
-rotation = 2.97881
-collision_layer = 2
-
-[node name="Bat10" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(3384, -395)
-rotation = 2.97881
-collision_layer = 2
-
-[node name="Bat11" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(3705, -609)
-rotation = 2.97881
-collision_layer = 2
-
-[node name="Bat12" parent="Enemies" instance=ExtResource("3_421kw")]
-position = Vector2(3947, -881)
-rotation = 2.97881
-collision_layer = 2
+metadata/_edit_group_ = true
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_w3rt8")]
 
