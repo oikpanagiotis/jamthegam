@@ -90,12 +90,15 @@ layer_0/tile_data = PackedInt32Array(65524, 196608, 0, 65525, 327680, 0, 65526, 
 [node name="Ghost_2" parent="Enemies" instance=ExtResource("3_x2ufr")]
 position = Vector2(628, -232)
 collision_layer = 2
-can_shoot_projectiles = true
 
 [node name="Ghost" parent="Enemies" instance=ExtResource("3_r5mj3")]
 position = Vector2(1571, -104)
 collision_layer = 2
 metadata/_edit_group_ = true
+
+[node name="Ghost_3" parent="Enemies" instance=ExtResource("3_x2ufr")]
+position = Vector2(1124, -176)
+collision_layer = 2
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_w3rt8")]
 
@@ -159,5 +162,5 @@ texture = ExtResource("11_sxmx5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ub8je")
-volume_db = -5.0
+volume_db = -20.0
 autoplay = true
