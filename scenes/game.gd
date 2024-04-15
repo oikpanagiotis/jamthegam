@@ -30,6 +30,8 @@ func initialize_hud(player: Player) -> void:
 	add_child(hud_layer)
 
 func next_level() -> void:
+	var current_level_number = levels_beat + 1
+	current_level.queue_free()
 	var next_level_number = levels_beat + 2
 	start_level_and_get_player(next_level_number)
 	initialize_hud(player)
