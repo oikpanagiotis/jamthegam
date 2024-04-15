@@ -158,7 +158,6 @@ JUMP_VELOCITY = -800
 friction_floor = 1500
 friction_air = 600
 gravity_muliplier = 2
-dash_cooldown_in_frames = 120
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ysekg")

@@ -21,4 +21,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if not body.is_dashing:
 			GameEvents.emit_signal("player_died")
-			queue_free()
+		queue_free()

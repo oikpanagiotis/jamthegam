@@ -9,7 +9,6 @@ class_name Player extends CharacterBody2D
 @export var gravity_muliplier = 4
 @export var wall_ride_speed = 1600
 @export var coyote_frames = 5
-@export var dash_cooldown_in_frames = 0
 @export var dash_grace_in_frames = 5
 @export var wall_frames = 5
 
@@ -24,7 +23,7 @@ class_name Player extends CharacterBody2D
 
 @onready var focus_point = $FocusPoint
 
-
+var dash_cooldown_in_frames = 0
 var is_dashing = false
 var last_direction = 1
 var dash_animation_finished = true
@@ -67,7 +66,7 @@ func _physics_process(delta):
 	var current_target:Node2D = get_target()
 	animate_arrow(current_target)
 	target = current_target
-	
+	print(dash_cooldown_in_frames)
 	if can_dash():
 		Effects.controller_vibrate_strong()
 		is_dashing = true 
