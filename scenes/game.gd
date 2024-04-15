@@ -10,6 +10,7 @@ var levels_beat = 0
 
 var current_level = null
 var player = null
+var hud_i = null
 
 
 var LEVELS = {
@@ -31,13 +32,19 @@ func start_level_and_get_player(level_number: int) -> Player:
 
 func initialize_hud(player: Player) -> void:
 	var hud_layer = hud.instantiate()
+	hud_i = hud_layer
 	hud_layer.get_node("SoulBar").player_ref = player
 	add_child(hud_layer)
+
+func destroy_hud() -> void:
+	hud_i.queue_free()
+
 
 func next_level() -> void:
 	var current_level_number = levels_beat + 1
 	current_level.queue_free()
 	var next_level_number = levels_beat + 2
+	destroy_hud()
 	player = start_level_and_get_player(next_level_number)
 	initialize_hud(player)
 
@@ -45,9 +52,9 @@ func next_level() -> void:
 func respawn_player() -> void:
 	var current_level_number = levels_beat + 1
 	current_level.queue_free()
+	destroy_hud()
 	var player = start_level_and_get_player(current_level_number)
 	initialize_hud(player)
-
 
 func start_game() -> void:
 	player = start_level_and_get_player(1)
