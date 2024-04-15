@@ -18,7 +18,9 @@ func die() -> void:
 	$AudioStreamPlayer2D.play()
 	is_dead = true
 	hide()
+	#remove_from_group("agent")
 
+	#queue_free()
 func reset() ->void:
 	is_dead = false
 	show()
