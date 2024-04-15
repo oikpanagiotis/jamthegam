@@ -1,26 +1,24 @@
-[gd_scene load_steps=31 format=3 uid="uid://d4l48lfa3qytg"]
+[gd_scene load_steps=29 format=3 uid="uid://d4l48lfa3qytg"]
 
 [ext_resource type="Script" path="res://milos/player/player.gd" id="1_esedo"]
-[ext_resource type="Texture2D" uid="uid://c368mieqduoyp" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
-[ext_resource type="Texture2D" uid="uid://cp2d55y507geq" path="res://milos/player/animations/idle_2.PNG" id="3_qo3u1"]
+[ext_resource type="Texture2D" uid="uid://d0eu37bxxdaya" path="res://milos/player/animations/idle_1.PNG" id="2_ysekg"]
+[ext_resource type="Texture2D" uid="uid://cwtrl4rpknr81" path="res://milos/player/animations/idle_2.PNG" id="3_qo3u1"]
 [ext_resource type="Script" path="res://milos/player/PlayerCamera.gd" id="3_w8y1y"]
-[ext_resource type="Texture2D" uid="uid://b8d5uktwo0gm8" path="res://milos/player/animations/idle_3.PNG" id="4_s5a2u"]
-[ext_resource type="Texture2D" uid="uid://bw0k4w7pdhdu6" path="res://milos/player/animations/run_1.PNG" id="5_ur1hw"]
-[ext_resource type="Texture2D" uid="uid://bude1ylslumib" path="res://milos/player/animations/run_2.PNG" id="6_sivtx"]
-[ext_resource type="Texture2D" uid="uid://didfxwcphdmps" path="res://milos/player/animations/run_3.PNG" id="7_4h4in"]
-[ext_resource type="Texture2D" uid="uid://howjqyqbvjkw" path="res://milos/player/animations/run_4.PNG" id="8_uvqc7"]
-[ext_resource type="Texture2D" uid="uid://c3ghu2e3us1er" path="res://milos/player/animations/run_5.PNG" id="9_ws5fv"]
-[ext_resource type="Texture2D" uid="uid://cjce44p8hryth" path="res://milos/player/animations/dash_2.PNG" id="10_6winx"]
-[ext_resource type="Texture2D" uid="uid://cqpeipordqtu5" path="res://milos/player/animations/dash_4.PNG" id="10_42iyi"]
-[ext_resource type="Texture2D" uid="uid://befy05qnk5cmc" path="res://milos/player/animations/dash_3.PNG" id="11_710mc"]
-[ext_resource type="AudioStream" uid="uid://b6aubefwhusk6" path="res://sfx/attack/attack2.wav" id="13_7xu1p"]
+[ext_resource type="Texture2D" uid="uid://d0ysynu51vaen" path="res://milos/player/animations/idle_3.PNG" id="4_s5a2u"]
+[ext_resource type="Texture2D" uid="uid://dnjy27sn4ihuk" path="res://milos/player/animations/run_1.PNG" id="5_ur1hw"]
+[ext_resource type="Texture2D" uid="uid://bgr4jeriue33u" path="res://milos/player/animations/run_2.PNG" id="6_sivtx"]
+[ext_resource type="Texture2D" uid="uid://c63lmy5y0cdwk" path="res://milos/player/animations/run_3.PNG" id="7_4h4in"]
+[ext_resource type="Texture2D" uid="uid://bs5307httih2x" path="res://milos/player/animations/run_4.PNG" id="8_uvqc7"]
+[ext_resource type="Texture2D" uid="uid://bi10ks0j41soq" path="res://milos/player/animations/run_5.PNG" id="9_ws5fv"]
+[ext_resource type="Texture2D" uid="uid://detxs07laul0w" path="res://milos/player/animations/dash_2.PNG" id="10_6winx"]
+[ext_resource type="Texture2D" uid="uid://b1oxg3qmt84m0" path="res://milos/player/animations/dash_4.PNG" id="10_42iyi"]
+[ext_resource type="Texture2D" uid="uid://ctfu2hl4k5b8f" path="res://milos/player/animations/dash_3.PNG" id="11_710mc"]
+[ext_resource type="AudioStream" uid="uid://dfa727ljlh0ut" path="res://sfx/attack/attack2.wav" id="13_7xu1p"]
 [ext_resource type="PackedScene" uid="uid://pxkra1gdo4o1" path="res://michail/Lamp/Lamp.tscn" id="14_7huuw"]
-[ext_resource type="Texture2D" uid="uid://h7u1s15be10l" path="res://milos/player/animations/jump_1.PNG" id="17_5gxl2"]
-[ext_resource type="Texture2D" uid="uid://bl8jt2v6t41ua" path="res://milos/player/animations/jump_2.PNG" id="18_6srty"]
-[ext_resource type="Texture2D" uid="uid://bqhkomxke5jj6" path="res://milos/player/animations/wall_slide_1.png" id="18_niakb"]
-[ext_resource type="Texture2D" uid="uid://ses6k1dy74hd" path="res://milos/player/animations/jump_3.PNG" id="19_q4wdn"]
-[ext_resource type="Texture2D" uid="uid://c6pmow1jkj2dp" path="res://milos/player/animations/wall_slide_2.png" id="19_un42v"]
-[ext_resource type="PackedScene" path="res://milos/player/focus_point.tscn" id="20_idjcj"]
+[ext_resource type="Texture2D" uid="uid://ckjo4mil802ee" path="res://milos/player/animations/jump_1.PNG" id="17_5gxl2"]
+[ext_resource type="Texture2D" uid="uid://bw36ts6aw0qm0" path="res://milos/player/animations/jump_2.PNG" id="18_6srty"]
+[ext_resource type="Texture2D" uid="uid://b1pjyjduw7m5n" path="res://milos/player/animations/jump_3.PNG" id="19_q4wdn"]
+[ext_resource type="PackedScene" uid="uid://brob1new1rdut" path="res://milos/player/focus_point.tscn" id="20_idjcj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y3g"]
 size = Vector2(14, 41.5)
@@ -140,7 +138,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.11),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("18_niakb"), ExtResource("19_un42v")]
+"values": [null, null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_478pa"]
@@ -153,7 +151,7 @@ _data = {
 "wall_slide": SubResource("Animation_hdrja")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(78, 43)
 script = ExtResource("1_esedo")
 JUMP_VELOCITY = -800
