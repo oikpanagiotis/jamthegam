@@ -183,7 +183,7 @@ func get_target():
 func get_enemies_in_range():
 	var enemies = []
 	for body in dash_detection_area.get_overlapping_bodies():
-		if body.is_in_group("agent"):
+		if body.is_in_group("agent") && not body.is_dead:
 			enemies.append(body)
 
 	return enemies
@@ -222,8 +222,7 @@ func should_stop_dashing():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "dash":
 		dash_animation_finished = true
-
-
+		
 func _on_animation_player_animation_started(anim_name):
 		if anim_name == "dash":
 			dash_animation_finished = false
