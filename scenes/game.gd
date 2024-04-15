@@ -29,13 +29,10 @@ func initialize_hud(player: Player) -> void:
 
 
 func respawn_player() -> void:
-	var hud = get_node("HUD")
-	var soulbar = hud.get_child(0)
-	soulbar.reset()
-	current_level.reset()
-	
-	var spawn_position = current_level.get_spawn().global_position
-	player.global_position = spawn_position
+	var current_level_number = levels_beat + 1
+	current_level.queue_free()
+	start_level_and_get_player(current_level_number)
+
 
 func _ready() -> void:
 	GameEvents.connect("player_died", respawn_player)

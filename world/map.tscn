@@ -203,64 +203,6 @@ motion_mirroring = Vector2(3840, 0)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_sxmx5")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="ParallaxBackground"]
-offset = Vector2(0, 100)
-transform = Transform2D(1, 0, 0, 1, 0, 100)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_offset = Vector2(0, -300)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_5a71o")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_offset = Vector2(0, -300)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("7_t5pr0")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_offset = Vector2(0, -300)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer3"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_l550d")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.4)
-motion_offset = Vector2(0, -300)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer4"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("9_iuoxs")
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
-motion_scale = Vector2(0.68, 0.68)
-motion_offset = Vector2(0, -300)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer5"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("10_h0xoh")
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
-motion_scale = Vector2(0.8, 0.8)
-motion_offset = Vector2(0, -300)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBackground/ParallaxLayer6"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("11_sxmx5")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ub8je")
 volume_db = -20.0
