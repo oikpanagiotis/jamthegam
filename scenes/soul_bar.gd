@@ -23,7 +23,10 @@ func _physics_process(delta: float) -> void:
 
 
 func emit_souls_depleted() -> void:
-	emit_signal("player_died", "no_souls")
+	GameEvents.emit_signal("player_died")
 
 func _on_minion_killed() -> void:
+	reset()
+
+func reset() -> void:
 	soulbits = max_soulbits
