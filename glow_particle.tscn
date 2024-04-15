@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://2imsqc0yh07w"]
 
-[ext_resource type="Texture2D" uid="uid://cn0uxh8mbmlwf" path="res://michail/Particles/pixil-frame-0.png" id="1_mwl40"]
+[ext_resource type="Texture2D" uid="uid://de6fx3fjwx7s3" path="res://michail/Particles/pixil-frame-0.png" id="1_mwl40"]
 
 [sub_resource type="Environment" id="Environment_ga0f3"]
 background_mode = 3

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="1_81hit"]
 [ext_resource type="PackedScene" uid="uid://dk21pppma0f7v" path="res://michail/TileMap.tscn" id="2_jg23i"]
-[ext_resource type="PackedScene" path="res://michail/TestTileMap.tscn" id="2_jyail"]
+[ext_resource type="PackedScene" uid="uid://bhwpv0anhv6vs" path="res://michail/TestTileMap.tscn" id="2_jyail"]
 
 [node name="level" type="Node"]
 
@@ -14,13 +14,6 @@ layer_0/tile_data = PackedInt32Array(1966039, 131072, 0, 1966038, 65536, 0, 1966
 
 [node name="Player" parent="." instance=ExtResource("1_81hit")]
 position = Vector2(217, 13)
-SPEED = 1600
-MAX_SPEED = 400
-gravity_terminal_velocity = 600
-wall_ride_speed = 1600
-coyote_frames = 5
-dash_grace_in_frames = 5
-wall_frames = 5
 metadata/_edit_group_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]

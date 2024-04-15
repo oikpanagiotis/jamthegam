@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce11sm1g4y6q1"]
 
-[ext_resource type="PackedScene" path="res://scenes/soul_bar.tscn" id="1_00frj"]
+[ext_resource type="PackedScene" uid="uid://dkqvwjofdqefx" path="res://scenes/soul_bar.tscn" id="1_00frj"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 2

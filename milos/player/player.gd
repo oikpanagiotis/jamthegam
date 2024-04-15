@@ -41,11 +41,6 @@ var dash_sound = [
 	preload("res://sfx/attack/attack3.wav")]
 var last_played_dash_sound = 0
 
-func reset()->void:
-	global_position = $PlayerSpawnPoint.global_position
-
-func die()->void:
-	reset()
 
 func play_dash_sound() -> void:
 	var sound = dash_sound[last_played_dash_sound]
@@ -69,6 +64,7 @@ func _physics_process(delta):
 	var current_target:Node2D = get_target()
 	animate_arrow(current_target)
 	target = current_target
+	
 
 	if can_dash():
 		is_dashing = true 
