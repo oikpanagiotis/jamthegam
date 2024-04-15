@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://defnt4hshxnfw"]
 
-[ext_resource type="Texture2D" uid="uid://cv54mdip1glwa" path="res://world/world_tiles.png" id="1_efkon"]
+[ext_resource type="Texture2D" uid="uid://bn47c1qwkuefq" path="res://world/world_tiles.png" id="1_efkon"]
 [ext_resource type="Script" path="res://world/map.gd" id="1_sl4yd"]
-[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/bat/bat.tscn" id="3_6jbqp"]
-[ext_resource type="PackedScene" uid="uid://c128c2eeb5c5x" path="res://scenes/player_spawn_point.tscn" id="5_w3rt8"]
-[ext_resource type="Texture2D" uid="uid://dfetnpfqxry6t" path="res://world/parallax/BG01.png" id="6_5a71o"]
-[ext_resource type="Texture2D" uid="uid://b4g08d0hb3fta" path="res://world/parallax/BG02.png" id="7_t5pr0"]
-[ext_resource type="Texture2D" uid="uid://ebxseq4uvnhl" path="res://world/parallax/BG03.png" id="8_l550d"]
-[ext_resource type="Texture2D" uid="uid://sveyypxhcy5r" path="res://world/parallax/BG04.png" id="9_iuoxs"]
-[ext_resource type="Texture2D" uid="uid://b1mhyp5onpg6f" path="res://world/parallax/BG05.png" id="10_h0xoh"]
-[ext_resource type="Texture2D" uid="uid://dwlplfnnqj851" path="res://world/parallax/BG06.png" id="11_sxmx5"]
-[ext_resource type="AudioStream" uid="uid://ccs86ful05flk" path="res://sfx/music/1-28-encore-201132.mp3" id="11_ub8je"]
+[ext_resource type="PackedScene" uid="uid://3tj54of4mobb" path="res://panos/ghost/bat.tscn" id="3_421kw"]
+[ext_resource type="PackedScene" path="res://scenes/player_spawn_point.tscn" id="5_w3rt8"]
+[ext_resource type="Texture2D" uid="uid://eikpfmoyshqy" path="res://world/parallax/BG01.png" id="6_5a71o"]
+[ext_resource type="Texture2D" uid="uid://834r3ne5it1l" path="res://world/parallax/BG02.png" id="7_t5pr0"]
+[ext_resource type="Texture2D" uid="uid://b2plo7g2aqv48" path="res://world/parallax/BG03.png" id="8_l550d"]
+[ext_resource type="Texture2D" uid="uid://dc6tidwwphjls" path="res://world/parallax/BG04.png" id="9_iuoxs"]
+[ext_resource type="Texture2D" uid="uid://dh46opwror2pc" path="res://world/parallax/BG05.png" id="10_h0xoh"]
+[ext_resource type="Texture2D" uid="uid://b4i3sl3238vei" path="res://world/parallax/BG06.png" id="11_sxmx5"]
+[ext_resource type="AudioStream" uid="uid://dxun7aywbr2sq" path="res://sfx/music/1-28-encore-201132.mp3" id="11_ub8je"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyg2f"]
 texture = ExtResource("1_efkon")
@@ -86,42 +86,41 @@ layer_0/tile_data = PackedInt32Array(65524, 196608, 0, 65525, 327680, 0, 65526, 
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Bat4" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat4" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(628, -232)
-rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat5" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat5" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(1043, -197)
 rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat6" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat6" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(1635, -170)
 rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat8" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat8" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(2471, -218)
 rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat9" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat9" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(2831, -356)
 rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat10" parent="Enemies" instance=ExtResource("3_6jbqp")]
-position = Vector2(3450, -352)
+[node name="Bat10" parent="Enemies" instance=ExtResource("3_421kw")]
+position = Vector2(3384, -395)
 rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat11" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat11" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(3705, -609)
 rotation = 2.97881
 collision_layer = 2
 
-[node name="Bat12" parent="Enemies" instance=ExtResource("3_6jbqp")]
+[node name="Bat12" parent="Enemies" instance=ExtResource("3_421kw")]
 position = Vector2(3947, -881)
 rotation = 2.97881
 collision_layer = 2
@@ -129,6 +128,8 @@ collision_layer = 2
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_w3rt8")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, 100)
+transform = Transform2D(1, 0, 0, 1, 0, 100)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)

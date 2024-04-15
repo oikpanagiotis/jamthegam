@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dayevh1hk5b0s"]
 
-[ext_resource type="Script" path="res://panos/bat/PlayerSensor.gd" id="1_vyfi0"]
+[ext_resource type="Script" path="res://panos/ghost/PlayerSensor.gd" id="1_vyfi0"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkk56"]
 radius = 205.061

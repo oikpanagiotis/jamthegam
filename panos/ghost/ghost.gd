@@ -6,7 +6,12 @@ var cooldown_left := 0
 
 const COOLDOWN := 500
 
+@onready var animation_player = $AnimationPlayer
+@onready var sprite = $Sprite2D
 
+var flight_direction = 1
+var flight_speed = 40
+var direction_switch_limit = 15
 var projectile_scn = preload("res://panos/projectile.tscn")
 
 func die() -> void:
@@ -26,10 +31,17 @@ func on_player_seen(player: CharacterBody2D) -> void:
 	seen = true
 
 func _ready() -> void:
+	animation_player.play("indle")
+
 	if is_in_group("agent"):
 		assert(has_method("die"), "All agents must implement die")
 
 func _physics_process(delta) -> void:
+	if abs(sprite.offset.y) > direction_switch_limit:
+		flight_direction = -flight_direction
+	sprite.offset.y +=flight_direction*delta*flight_speed
+
+	
 	if seen and player_ref != null:
 		cooldown_left -= delta
 		
