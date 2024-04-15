@@ -12,12 +12,16 @@ var flight_speed = 40
 var direction_switch_limit = 15
 var is_dead = false
 var projectile_scn = preload("res://panos/projectile.tscn")
+var death_particle = preload("res://scenes/death.tscn")
 
 func die() -> void:
 	GameEvents.emit_signal("minion_killed")
 	$AudioStreamPlayer2D.play()
 	is_dead = true
 	hide()
+	var particle = death_particle.instantiate()
+	particle.global_position = self.global_position
+	get_parent().add_child(particle)
 	#remove_from_group("agent")
 
 	#queue_free()

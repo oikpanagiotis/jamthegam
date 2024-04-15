@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://eqx6q0ga2g5"]
+[gd_scene load_steps=3 format=3 uid="uid://eqx6q0ga2g5"]
+
+[ext_resource type="Script" path="res://scenes/death.gd" id="1_l303m"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5rwq"]
 lifetime_randomness = 0.25
@@ -32,3 +34,6 @@ lifetime = 0.3
 one_shot = true
 speed_scale = 1.7
 explosiveness = 0.2
+script = ExtResource("1_l303m")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
