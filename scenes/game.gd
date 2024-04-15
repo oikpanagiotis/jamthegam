@@ -27,6 +27,11 @@ func initialize_hud(player: Player) -> void:
 	hud_layer.get_node("SoulBar").player_ref = player
 	add_child(hud_layer)
 
+func next_level() -> void:
+	var next_level_number = levels_beat + 2
+	start_level_and_get_player(next_level_number)
+	initialize_hud(player)
+
 
 func respawn_player() -> void:
 	var current_level_number = levels_beat + 1
