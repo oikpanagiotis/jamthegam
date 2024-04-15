@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cl7sqj4vxrfx4"]
 
-[ext_resource type="Texture2D" uid="uid://d1x475ier8aan" path="res://milos/arrow.png" id="1_4j3m5"]
+[ext_resource type="Texture2D" uid="uid://d1x475ier8aan" path="res://milos/arrow/arrow.png" id="1_j2ctq"]
 
 [node name="Arrow" type="Node2D"]
 
@@ -9,4 +9,4 @@ rotation = 1.5708
 
 [node name="ArrowSprite" type="Sprite2D" parent="AnchorPoint"]
 position = Vector2(-1.39876e-06, -32)
-texture = ExtResource("1_4j3m5")
+texture = ExtResource("1_j2ctq")

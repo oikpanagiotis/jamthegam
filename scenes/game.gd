@@ -2,8 +2,9 @@ extends Node
 
 var intro = preload("res://scenes/start_screen/start_screen.tscn")
 var hud = preload("res://scenes/hud.tscn")
-var level_1 = preload("res://world/map.tscn")
-
+var level_1 = preload("res://michail/levels/level_1.tscn")
+#var level_2 = preload("res://michail/levels/level_2.tscn")
+var level_3 = preload("res://michail/levels/level_3_m.tscn")
 var levels_beat = 0
 
 var current_level = null
@@ -12,6 +13,7 @@ var player = null
 
 var LEVELS = {
 	1: level_1,
+	2: level_3,
 }
 
 func start_level_and_get_player(level_number: int) -> Player:
@@ -33,7 +35,7 @@ func next_level() -> void:
 	var current_level_number = levels_beat + 1
 	current_level.queue_free()
 	var next_level_number = levels_beat + 2
-	start_level_and_get_player(next_level_number)
+	player = start_level_and_get_player(next_level_number)
 	initialize_hud(player)
 
 
@@ -56,4 +58,5 @@ func start_intro() -> void:
 func _ready() -> void:
 	GameEvents.connect("player_died", respawn_player)
 	GameEvents.connect("start_game", start_game)
+	GameEvents.connect("cultist_killed", next_level)
 	start_intro()

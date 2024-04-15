@@ -1,0 +1,76 @@
+[gd_scene load_steps=19 format=3 uid="uid://dvxis8eubg55a"]
+
+[ext_resource type="Script" path="res://milos/cultist/Cultist.gd" id="1_l178m"]
+[ext_resource type="Texture2D" uid="uid://ujh458eqsphq" path="res://milos/cultist/animations/IMG_1131.PNG" id="4_28an1"]
+[ext_resource type="Texture2D" uid="uid://qxo6x3tht0fh" path="res://milos/cultist/animations/IMG_1132.PNG" id="5_75dlk"]
+[ext_resource type="Texture2D" uid="uid://bnbvd0eogee45" path="res://milos/cultist/animations/IMG_1133.PNG" id="6_63bys"]
+[ext_resource type="Texture2D" uid="uid://cfcsebxnmwmt8" path="res://milos/cultist/animations/IMG_1134.PNG" id="7_oon32"]
+[ext_resource type="Texture2D" uid="uid://cfeytc8buyqi3" path="res://milos/cultist/animations/IMG_1135.PNG" id="8_etdfd"]
+[ext_resource type="Texture2D" uid="uid://clapm4x275yq0" path="res://milos/cultist/animations/IMG_1136.PNG" id="9_er0tb"]
+[ext_resource type="Texture2D" uid="uid://bwtsct7ydwfnc" path="res://milos/cultist/animations/IMG_1137.PNG" id="10_2wpu6"]
+[ext_resource type="Texture2D" uid="uid://rvllpgu2aixy" path="res://milos/cultist/animations/IMG_1138.PNG" id="11_2wm3c"]
+[ext_resource type="Texture2D" uid="uid://cte8xkcgmcc8k" path="res://milos/cultist/animations/IMG_1139.PNG" id="12_x75vf"]
+[ext_resource type="Texture2D" uid="uid://bkv13fxevp67" path="res://milos/cultist/animations/IMG_1140.PNG" id="13_ysebv"]
+[ext_resource type="Texture2D" uid="uid://d265fd384jitj" path="res://milos/cultist/animations/IMG_1141.PNG" id="14_uv2pn"]
+[ext_resource type="Texture2D" uid="uid://jk18b1gm8bi4" path="res://milos/cultist/animations/IMG_1142.PNG" id="15_g4ffj"]
+[ext_resource type="Texture2D" uid="uid://oxthm6t5t2s7" path="res://milos/cultist/animations/IMG_1143.PNG" id="16_m1mub"]
+
+[sub_resource type="Animation" id="Animation_bu1qi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_63bys")]
+}
+
+[sub_resource type="Animation" id="Animation_x8862"]
+resource_name = "idle"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_28an1"), ExtResource("5_75dlk"), ExtResource("6_63bys"), ExtResource("7_oon32"), ExtResource("8_etdfd"), ExtResource("9_er0tb"), ExtResource("10_2wpu6"), ExtResource("11_2wm3c"), ExtResource("12_x75vf"), ExtResource("13_ysebv"), ExtResource("14_uv2pn"), ExtResource("15_g4ffj"), ExtResource("16_m1mub")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfm7s"]
+_data = {
+"RESET": SubResource("Animation_bu1qi"),
+"idle": SubResource("Animation_x8862")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovaoc"]
+radius = 431.078
+
+[node name="Cultist" type="Node2D"]
+script = ExtResource("1_l178m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_gfm7s")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.546875, 0.608434)
+texture = ExtResource("6_63bys")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ovaoc")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

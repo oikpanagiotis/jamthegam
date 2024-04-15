@@ -61,11 +61,11 @@ func _process(delta):
 			coyote_timer -= 1
 
 func _physics_process(delta):
+
 	var current_target:Node2D = get_target()
 	animate_arrow(current_target)
 	target = current_target
 	
-
 	if can_dash():
 		is_dashing = true 
 		if  target.global_position.x - global_position.x < 0:
