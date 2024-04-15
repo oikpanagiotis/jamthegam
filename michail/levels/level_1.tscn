@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://4nadani53xoy"]
 
 [ext_resource type="PackedScene" uid="uid://d124eern2hg1q" path="res://scenes/parallax_background.tscn" id="1_0gojd"]
-[ext_resource type="PackedScene" path="res://michail/Tileset/TileMap.tscn" id="1_gvp4l"]
+[ext_resource type="PackedScene" uid="uid://c3668ixdvmqo0" path="res://michail/Tileset/TileMap.tscn" id="1_gvp4l"]
 [ext_resource type="PackedScene" uid="uid://c128c2eeb5c5x" path="res://scenes/player_spawn_point.tscn" id="2_0iiax"]
 [ext_resource type="PackedScene" uid="uid://ct1m1u02syb23" path="res://panos/ghost/ghost.tscn" id="4_rsccx"]
 

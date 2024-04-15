@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7ti0idhw1owq"]
 
-[ext_resource type="PackedScene" path="res://michail/Tileset/TileMap.tscn" id="1_s8q3n"]
+[ext_resource type="PackedScene" uid="uid://c3668ixdvmqo0" path="res://michail/Tileset/TileMap.tscn" id="1_s8q3n"]
 [ext_resource type="PackedScene" uid="uid://d124eern2hg1q" path="res://scenes/parallax_background.tscn" id="2_4duqt"]
 [ext_resource type="PackedScene" uid="uid://d4l48lfa3qytg" path="res://milos/player/player.tscn" id="3_p0t1c"]
 [ext_resource type="PackedScene" uid="uid://ct1m1u02syb23" path="res://panos/ghost/ghost.tscn" id="4_kssmk"]
