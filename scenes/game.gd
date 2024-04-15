@@ -1,5 +1,6 @@
 extends Node
 
+var intro = preload("res://scenes/start_screen/start_screen.tscn")
 var hud = preload("res://scenes/hud.tscn")
 var level_1 = preload("res://world/map.tscn")
 
@@ -8,12 +9,13 @@ var levels_beat = 0
 var current_level = null
 var player = null
 
+
 var LEVELS = {
 	1: level_1,
 }
 
 func start_level_and_get_player(level_number: int) -> Player:
-	var hud = get_node("HUD")
+	var hud = get_node_or_null("HUD")
 	if hud:
 		hud.queue_free()
 	
@@ -40,9 +42,15 @@ func respawn_player() -> void:
 	initialize_hud(player)
 
 
-func _ready() -> void:
-	GameEvents.connect("player_died", respawn_player)
-	
+func start_game() -> void:
 	player = start_level_and_get_player(1)
 	initialize_hud(player)
 
+func start_intro() -> void:
+	var intro_instance = intro.instantiate()
+	add_child(intro_instance)
+
+func _ready() -> void:
+	GameEvents.connect("player_died", respawn_player)
+	GameEvents.connect("start_game", start_game)
+	start_intro()
