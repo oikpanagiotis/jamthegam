@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_0vd4r"]
 resource_name = "Intro"
-length = 15.0
+length = 9.0
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -192,3 +192,5 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 theme = ExtResource("3_jdls5")
 text = "The Unsummoning"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

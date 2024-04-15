@@ -8,3 +8,5 @@ signal minion_killed
 signal cultist_killed
 
 signal start_game
+
+signal game_finished

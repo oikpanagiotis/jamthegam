@@ -52,6 +52,7 @@ func start_intro() -> void:
 	var intro_instance = intro.instantiate()
 	add_child(intro_instance)
 
+
 func _ready() -> void:
 	GameEvents.connect("player_died", respawn_player)
 	GameEvents.connect("start_game", start_game)
