@@ -20,11 +20,11 @@ layer_0/tile_data = PackedInt32Array(1441796, 1, 1, 1376260, 131073, 1, 1310724,
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="SpecialGhost" parent="Enemies" instance=ExtResource("4_1ou2u")]
-position = Vector2(1451, 28)
+position = Vector2(1535, -23)
 collision_layer = 2
 
 [node name="Ghost1" parent="Enemies" instance=ExtResource("5_dbei6")]
-position = Vector2(917, 281)
+position = Vector2(986, 263)
 collision_layer = 2
 
 [node name="Ghost3" parent="Enemies" instance=ExtResource("5_dbei6")]
